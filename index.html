@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Unshortener - Reveal Direct Links</title>
+    <style>
+        /* CSS - Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="url"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+
+        .result h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .final-link {
+            word-break: break-all;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .final-link:hover {
+            text-decoration: underline;
+        }
+
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .copy-btn:hover {
+            background: #218838;
+        }
+
+        .error {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+        }
+
+        .error-message {
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .history {
+            margin-top: 30px;
+        }
+
+        .history h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .history-item {
+            background: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .history-item:hover {
+            background: #e9ecef;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 Link Unshortener</h1>
+        <p class="subtitle">Paste any shortened link and reveal the direct destination URL</p>
+
+        <!-- Main Input Form -->
+        <div class="input-group">
+            <label for="shortUrl">📎 Enter Short URL:</label>
+            <input type="url" id="shortUrl" placeholder="e.g., https://short.link/xyz123" required>
+        </div>
+
+        <button id="unshortenBtn" onclick="unshortenLink()">
+            🔍 Reveal Link
+        </button>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Processing link...</p>
+        </div>
+
+        <!-- Result Display -->
+        <div id="result" class="result" style="display: none;">
+            <h3>✅ Direct Link Found!</h3>
+            <a id="finalLink" class="final-link" href="#" target="_blank"></a>
+            <div style="margin-top: 15px;">
+                <button class="copy-btn" onclick="copyToClipboard()">📋 Copy</button>
+                <button class="copy-btn" style="background: #17a2b8;" onclick="openLink()">🌐 Open</button>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error" class="result error" style="display: none;">
+            <div class="error-message" id="errorMessage"></div>
+        </div>
+
+        <!-- History Section -->
+        <div class="history">
+            <h3>📜 Recent Links</h3>
+            <div id="historyList">
+                <!-- Dynamically loaded by JavaScript -->
+            </div>
+            <button id="clearHistory" class="copy-btn" style="background: #dc3545; width: 100%; margin-top: 10px;" onclick="clearHistory()">
+                🗑️ Clear History
+            </button>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats" id="stats">
+            <span>📊 Total Links: <span id="totalLinks">0</span></span>
+            <span>✅ Success: <span id="successLinks">0</span></span>
+            <span>❌ Failed: <span id="failedLinks">0</span></span>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>⚡ 100% HTML, CSS, JavaScript only</p>
+            <p>🚀 Works via CORS proxy | <a href="#" onclick="showInfo()">Learn more</a></p>
+        </div>
+    </div>
+
+    <script>
+        // ========== JavaScript - Complete Logic ==========
+        
+        // CORS Proxies (Free to use)
+        const CORS_PROXIES = [
+            'https://api.allorigins.win/raw?url=',
+            'https://cors-anywhere.herokuapp.com/',
+            'https://proxy.cors.sh/'
+        ];
+
+        // Store history in localStorage
+        let history = JSON.parse(localStorage.getItem('linkHistory')) || [];
+        let currentProxyIndex = 0;
+
+        // Load history when page opens
+        window.onload = function() {
+            displayHistory();
+            updateStats();
+        };
+
+        // ========== Main Function - Unshorten Link ==========
+        async function unshortenLink() {
+            const shortUrl = document.getElementById('shortUrl').value.trim();
+            
+            // Empty link check
+            if (!shortUrl) {
+                showError('Please enter a URL');
+                return;
+            }
+
+            // URL validation
+            if (!isValidUrl(shortUrl)) {
+                showError('Please enter a valid URL (with http:// or https://)');
+                return;
+            }
+
+            // Update UI
+            showLoading();
+            hideResult();
+            hideError();
+
+            try {
+                // Try to get final URL via proxy
+                const finalUrl = await fetchWithProxy(shortUrl);
+                
+                if (finalUrl) {
+                    showResult(finalUrl);
+                    addToHistory(shortUrl, finalUrl);
+                } else {
+                    showError('Could not unshorten this link. Try another proxy.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Unable to process link. Please try again later.');
+            } finally {
+                hideLoading();
+            }
+        }
+
+        // ========== CORS Proxy Management ==========
+        async function fetchWithProxy(url) {
+            for (let i = 0; i < CORS_PROXIES.length; i++) {
+                try {
+                    const proxyUrl = CORS_PROXIES[currentProxyIndex] + encodeURIComponent(url);
+                    
+                    const response = await fetch(proxyUrl, {
+                        method: 'GET',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+
+                    if (response.ok) {
+                        // Get final URL from response
+                        const finalUrl = response.url;
+                        
+                        // Remove proxy URL
+                        const cleanedUrl = finalUrl.replace(CORS_PROXIES[currentProxyIndex], '');
+                        
+                        // Decode URL
+                        return decodeURIComponent(cleanedUrl);
+                    }
+                } catch (error) {
+                    console.log(`Proxy ${currentProxyIndex} failed, trying next...`);
+                    currentProxyIndex = (currentProxyIndex + 1) % CORS_PROXIES.length;
+                }
+            }
+            
+            // If all proxies fail, try alternative method
+            return await alternativeMethod(url);
+        }
+
+        // ========== Alternative Method ==========
+        async function alternativeMethod(url) {
+            try {
+                // Try via hidden iframe
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+                
+                iframe.src = url;
+                
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        try {
+                            const finalUrl = iframe.contentWindow.location.href;
+                            document.body.removeChild(iframe);
+                            if (finalUrl && finalUrl !== url) {
+                                resolve(finalUrl);
+                            } else {
+                                resolve(null);
+                            }
+                        } catch (e) {
+                            document.body.removeChild(iframe);
+                            resolve(null);
+                        }
+                    }, 3000);
+                });
+            } catch (error) {
+                return null;
+            }
+        }
+
+        // ========== URL Validation ==========
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (_) {
+                return false;
+            }
+        }
+
+        // ========== UI Functions ==========
+        function showResult(finalUrl) {
+            const resultDiv = document.getElementById('result');
+            const finalLink = document.getElementById('finalLink');
+            
+            finalLink.href = finalUrl;
+            finalLink.textContent = finalUrl;
+            resultDiv.style.display = 'block';
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            errorMessage.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('error').style.display = 'none';
+        }
+
+        function hideResult() {
+            document.getElementById('result').style.display = 'none';
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('unshortenBtn').disabled = true;
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('unshortenBtn').disabled = false;
+        }
+
+        // ========== Clipboard & Open ==========
+        function copyToClipboard() {
+            const finalLink = document.getElementById('finalLink').href;
+            navigator.clipboard.writeText(finalLink).then(() => {
+                alert('✅ Link copied to clipboard!');
+            }).catch(() => {
+                alert('❌ Failed to copy');
+            });
+        }
+
+        function openLink() {
+            const finalLink = document.getElementById('finalLink').href;
+            window.open(finalLink, '_blank');
+        }
+
+        // ========== History Management ==========
+        function addToHistory(shortUrl, finalUrl) {
+            const historyItem = {
+                short: shortUrl,
+                final: finalUrl,
+                timestamp: new Date().toLocaleString(),
+                id: Date.now()
+            };
+            
+            history.unshift(historyItem);
+            
+            // Keep only last 20 items
+            if (history.length > 20) {
+                history.pop();
+            }
+            
+            localStorage.setItem('linkHistory', JSON.stringify(history));
+            displayHistory();
+            updateStats();
+        }
+
+        function displayHistory() {
+            const historyList = document.getElementById('historyList');
+            
+            if (history.length === 0) {
+                historyList.innerHTML = '<p style="color: #999; text-align: center;">No links in history</p>';
+                return;
+            }
+            
+            let html = '';
+            history.forEach(item => {
+                html += `
+                    <div class="history-item" onclick="loadFromHistory('${item.short}')">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="font-weight: 500;">🔗 ${item.short.substring(0, 30)}...</span>
+                            <span style="color: #999; font-size: 12px;">${item.timestamp}</span>
+                        </div>
+                        <div style="color: #28a745; font-size: 12px; margin-top: 5px;">
+                            ➡️ ${item.final.substring(0, 40)}...
+                        </div>
+                    </div>
+                `;
+            });
+            
+            historyList.innerHTML = html;
+        }
+
+        function loadFromHistory(shortUrl) {
+            document.getElementById('shortUrl').value = shortUrl;
+            unshortenLink();
+        }
+
+        function clearHistory() {
+            if (confirm('Clear history?')) {
+                history = [];
+                localStorage.removeItem('linkHistory');
+                displayHistory();
+                updateStats();
+            }
+        }
+
+        // ========== Statistics ==========
+        function updateStats() {
+            const total = history.length;
+            
+            document.getElementById('totalLinks').textContent = total;
+            document.getElementById('successLinks').textContent = total;
+            document.getElementById('failedLinks').textContent = 0;
+        }
+
+        // ========== Info ==========
+        function showInfo() {
+            alert(
+                '🔍 Link Unshortener\n\n' +
+                'Built with 100% HTML, CSS, and JavaScript!\n\n' +
+                '⚙️ How it works:\n' +
+                '1. Accesses short links via CORS proxies\n' +
+                '2. Detects redirect locations\n' +
+                '3. Shows the final direct URL\n\n' +
+                '📌 Note: Some proxies may have rate limits.\n' +
+                'For full functionality, a backend API would be needed.'
+            );
+        }
+
+        // ========== Keyboard Shortcut ==========
+        document.getElementById('shortUrl').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                unshortenLink();
+            }
+        });
+    </script>
+</body>
+  </html>
