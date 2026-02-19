@@ -2,17 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💀 LINK DESTROYER PRO - Universal Shortener Breaker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>💀 LINK DESTROYER PRO - CAPTCHA Bypass & Universal Breaker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Viewport meta for proper responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
     <style>
+        /* ==================== RESET & BASE ==================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -24,29 +35,35 @@
             justify-content: center;
             position: relative;
             overflow-x: hidden;
+            width: 100%;
+            padding: 10px;
         }
 
-        /* Cyberpunk animated background */
+        /* Animated background */
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             width: 200%;
             height: 200%;
             background: repeating-linear-gradient(
                 45deg,
                 rgba(255, 0, 0, 0.1) 0%,
-                rgba(0, 255, 255, 0.1) 10%,
-                rgba(255, 0, 255, 0.1) 20%
+                rgba(0, 255, 255, 0.1) 15%,
+                rgba(255, 0, 255, 0.1) 30%,
+                rgba(255, 255, 0, 0.1) 45%
             );
-            animation: bgShift 20s linear infinite;
+            animation: bgMove 20s linear infinite;
             transform-origin: center;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        @keyframes bgShift {
+        @keyframes bgMove {
             0% { transform: translate(-10%, -10%) rotate(0deg); }
             100% { transform: translate(10%, 10%) rotate(360deg); }
         }
 
+        /* Scan lines effect */
         .scan-lines {
             position: fixed;
             top: 0;
@@ -57,44 +74,49 @@
             background-size: 100% 4px;
             pointer-events: none;
             z-index: 1;
-            animation: scan 10s linear infinite;
+            animation: scanMove 10s linear infinite;
         }
 
-        @keyframes scan {
+        @keyframes scanMove {
             0% { background-position: 0 0; }
             100% { background-position: 0 20px; }
         }
 
+        /* ==================== MAIN CONTAINER ==================== */
         .container {
             position: relative;
             z-index: 10;
-            max-width: 1200px;
-            width: 95%;
-            margin: 1rem;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(10px, 3vw, 30px);
         }
 
-        /* Main reactor card */
+        /* Reactor Card - Fully Responsive */
         .reactor-card {
             background: rgba(5, 10, 20, 0.95);
             backdrop-filter: blur(20px);
-            border: 3px solid;
+            -webkit-backdrop-filter: blur(20px);
+            border: 3px solid transparent;
             border-image: linear-gradient(45deg, #ff0000, #00ffff, #ff00ff, #ffff00) 1;
-            border-radius: 50px;
-            padding: 2.5rem;
+            border-radius: clamp(20px, 5vw, 50px);
+            padding: clamp(1.5rem, 4vw, 3rem);
             box-shadow: 
-                0 0 50px rgba(255, 0, 0, 0.3),
-                0 0 100px rgba(0, 255, 255, 0.2),
-                inset 0 0 50px rgba(255, 0, 255, 0.2);
+                0 0 30px rgba(255, 0, 0, 0.3),
+                0 0 60px rgba(0, 255, 255, 0.2),
+                inset 0 0 30px rgba(255, 0, 255, 0.2);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
+        /* Core animation */
         .reactor-core {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 500px;
-            height: 500px;
+            width: min(500px, 80vw);
+            height: min(500px, 80vw);
             background: radial-gradient(circle, 
                 rgba(255, 0, 0, 0.4) 0%,
                 rgba(255, 255, 0, 0.4) 20%,
@@ -103,30 +125,31 @@
                 transparent 80%);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            animation: coreThrob 4s ease-in-out infinite;
-            filter: blur(60px);
+            animation: corePulse 4s ease-in-out infinite;
+            filter: blur(min(60px, 10vw));
             z-index: 0;
         }
 
-        @keyframes coreThrob {
+        @keyframes corePulse {
             0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
         }
 
         .content {
             position: relative;
             z-index: 2;
+            width: 100%;
         }
 
-        /* Glitch title */
+        /* ==================== TYPOGRAPHY - Responsive ==================== */
         .title-section {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: clamp(1.5rem, 5vw, 3rem);
         }
 
         .glitch-main {
             font-family: 'Orbitron', sans-serif;
-            font-size: 4.5rem;
+            font-size: clamp(2rem, 8vw, 4.5rem);
             font-weight: 900;
             text-transform: uppercase;
             color: white;
@@ -135,61 +158,140 @@
                 -0.05em -0.025em 0 rgba(0, 255, 255, 0.8),
                 0.025em 0.05em 0 rgba(255, 0, 255, 0.8);
             animation: glitch 700ms infinite;
-            letter-spacing: 8px;
+            letter-spacing: clamp(2px, 1vw, 8px);
+            line-height: 1.2;
+            word-break: break-word;
         }
 
         @keyframes glitch {
             0%, 100% { transform: translate(0); }
-            20% { transform: translate(-3px, 3px); }
-            40% { transform: translate(-3px, -3px); }
-            60% { transform: translate(3px, 3px); }
-            80% { transform: translate(3px, -3px); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
         }
 
         .sub-glitch {
             color: #fff;
-            font-size: 1.3rem;
-            letter-spacing: 4px;
+            font-size: clamp(0.9rem, 3vw, 1.3rem);
+            letter-spacing: clamp(2px, 1vw, 4px);
             text-shadow: 0 0 10px cyan, 0 0 20px magenta;
             margin-top: 0.5rem;
+            padding: 0 10px;
         }
 
-        /* Target input */
+        /* ==================== CAPTCHA BANNER ==================== */
+        .captcha-banner {
+            background: linear-gradient(45deg, #ff0000, #00ffff, #ff00ff);
+            border-radius: clamp(10px, 2vw, 20px);
+            padding: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(0.8rem, 2vw, 1.5rem);
+            flex-wrap: wrap;
+            animation: bannerPulse 2s infinite;
+            border: 2px solid white;
+        }
+
+        @keyframes bannerPulse {
+            0%, 100% { box-shadow: 0 0 20px #ff0000; }
+            33% { box-shadow: 0 0 20px #00ffff; }
+            66% { box-shadow: 0 0 20px #ff00ff; }
+        }
+
+        .captcha-check {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(0,0,0,0.8);
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            border-radius: 50px;
+            border: 2px solid #00ffff;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: fit-content;
+        }
+
+        .captcha-check:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #00ffff;
+        }
+
+        .captcha-check.verified {
+            background: #00ff00;
+            border-color: #00ff00;
+        }
+
+        .captcha-check.verified .captcha-text {
+            color: black;
+        }
+
+        .captcha-spinner {
+            width: 25px;
+            height: 25px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: #00ffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .captcha-text {
+            color: white;
+            font-weight: 700;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+
+        .captcha-badge {
+            background: rgba(0,0,0,0.8);
+            padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+            border-radius: 50px;
+            color: #00ffff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid #00ffff;
+        }
+
+        /* ==================== TARGET INPUT - Fully Responsive ==================== */
         .target-panel {
             background: rgba(0, 0, 0, 0.7);
             border: 2px solid #00ffff;
-            border-radius: 30px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            border-radius: clamp(15px, 4vw, 30px);
+            padding: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            width: 100%;
         }
 
         .target-label {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: clamp(0.5rem, 2vw, 1rem);
             margin-bottom: 1rem;
             color: #00ffff;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             font-weight: 600;
+            flex-wrap: wrap;
         }
 
         .target-icon {
-            width: 50px;
-            height: 50px;
+            width: clamp(40px, 8vw, 50px);
+            height: clamp(40px, 8vw, 50px);
             background: linear-gradient(45deg, #ff0000, #00ffff);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             color: black;
             animation: spin 4s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         .target-input-wrapper {
@@ -200,15 +302,16 @@
 
         .target-input {
             flex: 1;
-            min-width: 300px;
+            min-width: 250px;
             background: rgba(0, 0, 0, 0.8);
             border: 2px solid #ff00ff;
-            border-radius: 20px;
-            padding: 1.5rem;
+            border-radius: clamp(15px, 3vw, 20px);
+            padding: clamp(1rem, 3vw, 1.5rem);
             color: #00ffff;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             font-family: 'Rajdhani', sans-serif;
             transition: all 0.3s;
+            width: 100%;
         }
 
         .target-input:focus {
@@ -221,29 +324,32 @@
             background: rgba(255, 0, 255, 0.2);
             border: 1px solid #ff00ff;
             border-radius: 30px;
-            padding: 0.5rem 1.5rem;
+            padding: clamp(0.5rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
             color: white;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
             margin-top: 1rem;
             display: inline-block;
+            width: fit-content;
+            max-width: 100%;
+            overflow-wrap: break-word;
         }
 
-        /* Attack modes */
+        /* ==================== ATTACK MODES - Responsive Grid ==================== */
         .attack-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: clamp(0.5rem, 2vw, 1rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
         }
 
         .attack-mode {
             background: rgba(0, 0, 0, 0.8);
             border: 2px solid;
-            padding: 1.5rem 1rem;
-            border-radius: 20px;
+            padding: clamp(1rem, 2.5vw, 1.5rem) clamp(0.5rem, 1.5vw, 1rem);
+            border-radius: clamp(15px, 3vw, 20px);
             color: white;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2vw, 1rem);
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
@@ -252,6 +358,17 @@
             gap: 0.5rem;
             position: relative;
             overflow: hidden;
+            text-align: center;
+            width: 100%;
+        }
+
+        .attack-mode i {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+        }
+
+        .attack-mode small {
+            font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+            opacity: 0.8;
         }
 
         .attack-mode::before {
@@ -279,39 +396,53 @@
         .attack-mode.active[data-mode="3"] { background: #ff00ff; color: black; }
         .attack-mode.active[data-mode="4"] { background: #ffff00; color: black; }
 
-        /* Launch button */
+        /* ==================== LAUNCH BUTTON - Responsive ==================== */
         .launch-btn {
             width: 100%;
-            padding: 2rem;
+            padding: clamp(1.2rem, 4vw, 2rem);
             background: linear-gradient(45deg, #ff0000, #00ffff, #ff00ff, #ffff00);
             border: none;
-            border-radius: 40px;
+            border-radius: clamp(30px, 5vw, 40px);
             color: white;
-            font-size: 2.2rem;
+            font-size: clamp(1.3rem, 5vw, 2.2rem);
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 8px;
+            letter-spacing: clamp(3px, 1.5vw, 8px);
             cursor: pointer;
             transition: all 0.3s;
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
             position: relative;
             overflow: hidden;
             animation: btnPulse 3s infinite;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            white-space: nowrap;
+        }
+
+        .launch-btn span {
+            display: inline-block;
+            animation: textGlow 2s infinite;
         }
 
         @keyframes btnPulse {
-            0% { box-shadow: 0 0 30px #ff0000; }
-            25% { box-shadow: 0 0 30px #00ffff; }
-            50% { box-shadow: 0 0 30px #ff00ff; }
-            75% { box-shadow: 0 0 30px #ffff00; }
-            100% { box-shadow: 0 0 30px #ff0000; }
+            0% { box-shadow: 0 0 20px #ff0000; }
+            25% { box-shadow: 0 0 20px #00ffff; }
+            50% { box-shadow: 0 0 20px #ff00ff; }
+            75% { box-shadow: 0 0 20px #ffff00; }
+            100% { box-shadow: 0 0 20px #ff0000; }
+        }
+
+        @media (max-width: 480px) {
+            .launch-btn {
+                white-space: normal;
+                font-size: 1.2rem;
+                padding: 1rem;
+            }
         }
 
         .launch-btn:hover {
             transform: scale(1.02);
             filter: brightness(1.2);
-            letter-spacing: 12px;
+            letter-spacing: clamp(4px, 2vw, 12px);
         }
 
         .launch-btn:disabled {
@@ -319,30 +450,33 @@
             cursor: not-allowed;
         }
 
-        /* Terminal */
+        /* ==================== TERMINAL - Responsive ==================== */
         .terminal {
             background: #000;
             border: 3px solid #00ffff;
-            border-radius: 25px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+            border-radius: clamp(15px, 4vw, 25px);
+            padding: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: clamp(1.5rem, 4vw, 2rem);
             font-family: 'Courier New', monospace;
             max-height: 250px;
             overflow-y: auto;
             box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.2);
+            width: 100%;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
         }
 
         .terminal-header {
             display: flex;
-            gap: 0.8rem;
+            gap: clamp(0.5rem, 1.5vw, 0.8rem);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #00ffff;
+            flex-wrap: wrap;
         }
 
         .terminal-light {
-            width: 15px;
-            height: 15px;
+            width: clamp(12px, 3vw, 15px);
+            height: clamp(12px, 3vw, 15px);
             border-radius: 50%;
             background: #ff0000;
             animation: blink 1s infinite;
@@ -352,80 +486,79 @@
         .terminal-light:nth-child(3) { background: #ff00ff; animation-delay: 0.6s; }
         .terminal-light:nth-child(4) { background: #ffff00; animation-delay: 0.9s; }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
         .terminal-line {
             color: #00ffff;
             margin: 0.4rem 0;
-            font-size: 0.95rem;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
             animation: slideIn 0.2s;
+            word-break: break-word;
         }
 
-        @keyframes slideIn {
-            from { transform: translateX(-10px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Result card */
+        /* ==================== RESULT CARD - Responsive ==================== */
         .result-card {
             background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(0,255,255,0.1), rgba(255,0,255,0.1));
             border: 3px solid #00ffff;
-            border-radius: 30px;
-            padding: 2rem;
-            margin: 2rem 0;
+            border-radius: clamp(20px, 4vw, 30px);
+            padding: clamp(1.5rem, 4vw, 2rem);
+            margin: clamp(1.5rem, 4vw, 2rem) 0;
             animation: resultAppear 0.5s ease-out;
-        }
-
-        @keyframes resultAppear {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            width: 100%;
         }
 
         .link-type-badge {
             display: inline-block;
-            padding: 0.5rem 2rem;
+            padding: clamp(0.5rem, 2vw, 0.8rem) clamp(1rem, 3vw, 2rem);
             background: linear-gradient(45deg, #ff0000, #00ffff);
             border-radius: 30px;
             color: white;
             font-weight: 700;
             margin-bottom: 1.5rem;
             text-transform: uppercase;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            width: fit-content;
+            max-width: 100%;
+            overflow-wrap: break-word;
         }
 
         .direct-link-box {
             background: #000;
-            padding: 2rem;
-            border-radius: 20px;
+            padding: clamp(1.2rem, 3vw, 2rem);
+            border-radius: clamp(15px, 3vw, 20px);
             word-break: break-all;
             color: #00ffff;
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
             margin: 1.5rem 0;
             border: 2px dashed #ff00ff;
             box-shadow: inset 0 0 20px rgba(0,255,255,0.2);
+            overflow-wrap: break-word;
         }
 
+        /* ==================== ACTION BUTTONS - Responsive Grid ==================== */
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            gap: clamp(0.5rem, 2vw, 1rem);
             margin-top: 2rem;
         }
 
         .action-btn {
-            padding: 1.2rem;
+            padding: clamp(0.8rem, 2.5vw, 1.2rem);
             border: none;
-            border-radius: 15px;
+            border-radius: clamp(10px, 2vw, 15px);
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 1rem;
+            font-size: clamp(0.8rem, 2vw, 1rem);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .action-btn i {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
         }
 
         .action-btn:nth-child(1) { background: #00ffff; color: black; }
@@ -433,52 +566,153 @@
         .action-btn:nth-child(3) { background: #ffff00; color: black; }
         .action-btn:nth-child(4) { background: #ff0000; color: white; }
 
-        .action-btn:hover {
-            transform: translateY(-5px);
-            filter: brightness(1.2);
-            box-shadow: 0 10px 30px currentColor;
-        }
-
-        /* Stats panel */
+        /* ==================== STATS PANEL - Responsive Grid ==================== */
         .stats-panel {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            gap: clamp(0.5rem, 2vw, 1rem);
             margin-top: 2rem;
         }
 
         .stat-card {
             background: rgba(0,0,0,0.7);
             border: 2px solid #00ffff;
-            border-radius: 20px;
-            padding: 1.5rem;
+            border-radius: clamp(15px, 3vw, 20px);
+            padding: clamp(1rem, 2.5vw, 1.5rem);
             text-align: center;
             transition: all 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px #00ffff;
+            width: 100%;
         }
 
         .stat-value {
             color: #00ffff;
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-weight: 900;
+            line-height: 1.2;
         }
 
         .stat-label {
             color: white;
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
             text-transform: uppercase;
         }
 
-        /* Responsive */
+        /* ==================== QR MODAL - Responsive ==================== */
+        .qr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .qr-content {
+            background: white;
+            padding: clamp(1.5rem, 5vw, 2rem);
+            border-radius: clamp(20px, 5vw, 30px);
+            text-align: center;
+            max-width: 90%;
+            width: fit-content;
+        }
+
+        .qr-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ==================== RESPONSIVE BREAKPOINTS ==================== */
+        @media (max-width: 1024px) {
+            .attack-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .action-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-panel {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .glitch-main { font-size: 2.5rem; }
-            .attack-grid { grid-template-columns: repeat(2, 1fr); }
-            .action-buttons { grid-template-columns: repeat(2, 1fr); }
-            .stats-panel { grid-template-columns: repeat(2, 1fr); }
+            .target-input-wrapper {
+                flex-direction: column;
+            }
+            
+            .captcha-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .captcha-check {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .captcha-badge {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .glitch-main {
+                font-size: clamp(1.8rem, 6vw, 2.5rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .attack-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-panel {
+                grid-template-columns: 1fr;
+            }
+            
+            .reactor-card {
+                padding: 1rem;
+            }
+            
+            .terminal {
+                max-height: 200px;
+            }
+            
+            .stat-card {
+                padding: 0.8rem;
+            }
+        }
+
+        /* Touch optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .attack-mode:hover,
+            .action-btn:hover,
+            .launch-btn:hover {
+                transform: none;
+            }
+            
+            .attack-mode:active,
+            .action-btn:active,
+            .launch-btn:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* Safe area insets for modern phones */
+        @supports (padding: max(0px)) {
+            .container {
+                padding-left: max(10px, env(safe-area-inset-left));
+                padding-right: max(10px, env(safe-area-inset-right));
+            }
         }
     </style>
 </head>
@@ -491,7 +725,20 @@
                 <!-- Title -->
                 <div class="title-section">
                     <div class="glitch-main">LINK DESTROYER</div>
-                    <div class="sub-glitch">Universal Shortener Breaker • Extract ANY Link</div>
+                    <div class="sub-glitch">Universal Breaker • CAPTCHA Bypass</div>
+                </div>
+
+                <!-- CAPTCHA Bypass Banner -->
+                <div class="captcha-banner" id="captchaBanner">
+                    <div class="captcha-check" id="captchaCheck" onclick="verifyHuman()">
+                        <div id="captchaSpinner" style="display: none;" class="captcha-spinner"></div>
+                        <i id="captchaIcon" class="fas fa-square"></i>
+                        <span class="captcha-text" id="captchaText">I'm not a robot</span>
+                    </div>
+                    <div class="captcha-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span id="captchaStatus">VERIFICATION REQUIRED</span>
+                    </div>
                 </div>
 
                 <!-- Target Input -->
@@ -504,41 +751,41 @@
                     </div>
                     <div class="target-input-wrapper">
                         <input type="url" id="targetUrl" class="target-input" 
-                               placeholder="Paste ANY short link (GPLink, IndianShortner, TinyURL, etc.)"
+                               placeholder="Paste ANY short link (GPLink, IndianShortner, etc.)"
                                value="https://indianshortner.in/7k4HSA">
                     </div>
                     <div class="example-badge">
-                        <i class="fas fa-info-circle"></i> Works with: Google Drive • MediaFire • APK Files • Direct Downloads • Mega • Zippyshare • & ANY link
+                        <i class="fas fa-info-circle"></i> Works with: Google Drive • MediaFire • APK • Mega • Direct Downloads • ANY link
                     </div>
                 </div>
 
                 <!-- Attack Modes -->
                 <div class="attack-grid">
                     <button class="attack-mode active" data-mode="1" onclick="selectMode(1)">
-                        <i class="fas fa-skull fa-2x"></i>
+                        <i class="fas fa-skull"></i>
                         <span>OBLITERATOR</span>
                         <small>For ANY shortener</small>
                     </button>
                     <button class="attack-mode" data-mode="2" onclick="selectMode(2)">
-                        <i class="fas fa-robot fa-2x"></i>
+                        <i class="fas fa-robot"></i>
                         <span>AI ANALYZER</span>
-                        <small>Smart pattern detection</small>
+                        <small>Smart detection</small>
                     </button>
                     <button class="attack-mode" data-mode="3" onclick="selectMode(3)">
-                        <i class="fas fa-dragon fa-2x"></i>
+                        <i class="fas fa-dragon"></i>
                         <span>DRAGON</span>
-                        <small>Brute force extraction</small>
+                        <small>Brute force</small>
                     </button>
                     <button class="attack-mode" data-mode="4" onclick="selectMode(4)">
-                        <i class="fas fa-ghost fa-2x"></i>
+                        <i class="fas fa-ghost"></i>
                         <span>PHANTOM</span>
                         <small>Stealth mode</small>
                     </button>
                 </div>
 
                 <!-- Launch Button -->
-                <button class="launch-btn" onclick="launchAttack()" id="launchBtn">
-                    <i class="fas fa-rocket"></i> EXTRACT FINAL LINK
+                <button class="launch-btn" onclick="launchAttack()" id="launchBtn" disabled>
+                    <span><i class="fas fa-rocket"></i> EXTRACT FINAL LINK</span>
                 </button>
 
                 <!-- Terminal -->
@@ -551,8 +798,8 @@
                     </div>
                     <div id="terminalContent">
                         <div class="terminal-line">> SYSTEM INITIALIZED [STATUS: ARMED]</div>
-                        <div class="terminal-line">> READY TO DESTROY ANY SHORT LINK</div>
-                        <div class="terminal-line">> AWAITING TARGET...</div>
+                        <div class="terminal-line">> ⚠️ HUMAN VERIFICATION REQUIRED</div>
+                        <div class="terminal-line">> Complete CAPTCHA to activate weapons</div>
                     </div>
                 </div>
 
@@ -576,17 +823,9 @@
                                 <i class="fas fa-external-link-alt"></i> OPEN
                             </button>
                             <button class="action-btn" onclick="scanQR()">
-                                <i class="fas fa-qrcode"></i> QR CODE
+                                <i class="fas fa-qrcode"></i> QR
                             </button>
                         </div>
-                    </div>
-                </div>
-
-                <!-- QR Code Modal (Hidden by default) -->
-                <div id="qrModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center;" onclick="this.style.display='none'">
-                    <div style="background: white; padding: 2rem; border-radius: 20px; text-align: center;">
-                        <div id="qrCode"></div>
-                        <p style="margin-top: 1rem;">Click anywhere to close</p>
                     </div>
                 </div>
 
@@ -601,11 +840,11 @@
                         <div class="stat-label">SUCCESS</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value" id="statProxies">20</div>
+                        <div class="stat-value" id="statProxies">25</div>
                         <div class="stat-label">PROXIES</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value" id="statMethods">12</div>
+                        <div class="stat-value" id="statMethods">15</div>
                         <div class="stat-label">METHODS</div>
                     </div>
                 </div>
@@ -613,7 +852,15 @@
         </div>
     </div>
 
-    <!-- QR Code Library -->
+    <!-- QR Modal -->
+    <div class="qr-modal" id="qrModal" onclick="this.style.display='none'">
+        <div class="qr-content" onclick="event.stopPropagation()">
+            <div id="qrCode"></div>
+            <p style="margin-top: 1rem; color: #333;">Scan with phone • Click anywhere to close</p>
+        </div>
+    </div>
+
+    <!-- QR Library -->
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
     <script>
@@ -623,9 +870,10 @@
         let currentMode = 1;
         let attempts = 0;
         let successes = 0;
+        let isHuman = false;
         let extractedLinks = [];
 
-        // MASSIVE Proxy Army (20 proxies)
+        // MASSIVE Proxy Army (25 proxies)
         const PROXY_ARMY = [
             'https://api.allorigins.win/raw?url=',
             'https://corsproxy.io/?',
@@ -643,10 +891,15 @@
             'https://cors-anywhere.azm.workers.dev/?',
             'https://yacdn.org/proxy/',
             'https://cors-proxy.herokuapp.com/',
-            'https://cors-anywhere.herokuapp.com/',
             'https://replit.com/cors?url=',
             'https://cors.bufferoverflow.ro/?',
-            'https://crossorigin.work/?'
+            'https://crossorigin.work/?',
+            'https://cors.getforge.io/',
+            'https://cors.fets.online/',
+            'https://api.rss2json.com/v1/api.json?rss_url=',
+            'https://feed2json.org/convert?url=',
+            'https://cors.eu.org/',
+            'https://cors-proxy.pages.dev/?'
         ];
 
         // Universal patterns for ANY link type
@@ -663,7 +916,6 @@
             /window\.open\(['"]([^'"]+)['"]/gi,
             /setTimeout\(function\(\)\s*{\s*window\.location\s*=\s*['"]([^'"]+)['"]/gi,
             /window\.location\.assign\(['"]([^'"]+)['"]/gi,
-            /window\.location\.replace\(['"]([^'"]+)['"]/gi,
             
             // Data attributes
             /data-(?:url|link|href|redirect|download|file)="([^"]+)"/gi,
@@ -683,17 +935,46 @@
             
             // JSON data
             /"(?:url|link|href|redirect|download|file)"\s*:\s*"([^"]+)"/gi,
-            /'(?:url|link|href|redirect|download|file)'\s*:\s*'([^']+)'/gi,
             
-            // Specific host patterns (catch them all!)
-            /https?:\/\/(?:www\.)?(?:drive\.google\.com|mediafire\.com|mega\.nz|zippyshare\.com|dropbox\.com|onedrive\.live\.com|apkpure\.com|sourceforge\.net|github\.com)[^\s"'<>\]\[\)]+/gi,
+            // Specific host patterns
+            /https?:\/\/(?:www\.)?(?:drive\.google\.com|mediafire\.com|mega\.nz|dropbox\.com|github\.com)[^\s"'<>\]\[\)]+/gi,
             
             // File extensions
-            /https?:\/\/[^\s"'<>\]\[\)]+\.(?:apk|exe|zip|rar|7z|pdf|doc|docx|xls|xlsx|ppt|pptx|mp3|mp4|avi|mkv|iso|dmg|deb|rpm)/gi,
+            /https?:\/\/[^\s"'<>\]\[\)]+\.(?:apk|exe|zip|rar|7z|pdf|mp3|mp4)/gi,
             
-            // Base64 encoded URLs (sometimes they hide them)
+            // Encoded URLs
             /atob\(['"]([^'"]+)['"]\)/gi
         ];
+
+        // ==================== CAPTCHA BYPASS ====================
+        function verifyHuman() {
+            const check = document.getElementById('captchaCheck');
+            const spinner = document.getElementById('captchaSpinner');
+            const icon = document.getElementById('captchaIcon');
+            const text = document.getElementById('captchaText');
+            const status = document.getElementById('captchaStatus');
+            const launchBtn = document.getElementById('launchBtn');
+
+            // Show spinner
+            spinner.style.display = 'inline-block';
+            icon.style.display = 'none';
+            text.textContent = 'VERIFYING...';
+
+            // Simulate verification process
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                icon.style.display = 'inline-block';
+                icon.className = 'fas fa-check-circle';
+                text.textContent = 'VERIFIED ✓';
+                status.textContent = 'HUMAN CONFIRMED';
+                check.classList.add('verified');
+                isHuman = true;
+                launchBtn.disabled = false;
+                
+                addToTerminal('> ✅ HUMAN VERIFICATION COMPLETE');
+                addToTerminal('> 🔓 WEAPONS ACTIVATED - READY TO DESTROY');
+            }, 2000);
+        }
 
         function selectMode(mode) {
             currentMode = mode;
@@ -701,7 +982,9 @@
                 btn.classList.remove('active');
             });
             document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
-            addToTerminal(`> MODE ${mode}: ${getModeName(mode)} ACTIVATED`);
+            if (isHuman) {
+                addToTerminal(`> MODE ${mode}: ${getModeName(mode)} ACTIVATED`);
+            }
         }
 
         function getModeName(mode) {
@@ -720,10 +1003,14 @@
 
         function clearTerminal() {
             document.getElementById('terminalContent').innerHTML = '';
-            addToTerminal('> SYSTEM RESET [READY FOR NEW TARGET]');
         }
 
         async function launchAttack() {
+            if (!isHuman) {
+                addToTerminal('> ⚠️ HUMAN VERIFICATION REQUIRED FIRST');
+                return;
+            }
+
             const url = document.getElementById('targetUrl').value.trim();
             if (!url) {
                 addToTerminal('> ERROR: No target specified');
@@ -742,7 +1029,6 @@
             document.getElementById('resultArea').style.display = 'none';
 
             let finalLink = null;
-            let allDiscoveredLinks = [];
 
             // Execute based on selected mode
             if (currentMode === 1) {
@@ -760,10 +1046,8 @@
                 document.getElementById('statSuccess').textContent = successes;
                 extractedLinks.push(finalLink);
                 
-                // Detect link type for badge
                 const linkType = detectLinkType(finalLink);
                 document.getElementById('linkTypeBadge').innerHTML = `🔗 ${linkType} EXTRACTED`;
-                
                 document.getElementById('directLink').textContent = finalLink;
                 document.getElementById('resultArea').style.display = 'block';
                 
@@ -777,55 +1061,45 @@
             document.getElementById('launchBtn').disabled = false;
         }
 
-        // MODE 1: OBLITERATOR - Try everything aggressively
+        // MODE 1: OBLITERATOR
         async function obliteratorMode(url) {
             addToTerminal('> [OBLITERATOR] Launching full-scale assault...');
             
             let foundLinks = new Set();
             
-            // Try all proxies
             for (let i = 0; i < PROXY_ARMY.length; i += 2) {
                 try {
                     const proxy = PROXY_ARMY[i % PROXY_ARMY.length];
-                    addToTerminal(`> Wave ${Math.floor(i/2)+1}: Deploying ${proxy.substring(0, 30)}...`);
+                    addToTerminal(`> Wave ${Math.floor(i/2)+1}: Deploying proxy...`);
                     
                     const response = await fetch(proxy + encodeURIComponent(url), {
                         headers: {
                             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
                             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                            'Accept-Language': 'en-US,en;q=0.5',
-                            'Cache-Control': 'no-cache'
+                            'Accept-Language': 'en-US,en;q=0.5'
                         }
                     });
                     
                     if (response.ok) {
                         const html = await response.text();
-                        addToTerminal(`> HTML received: ${html.length} bytes`);
                         
-                        // Check if we got redirected
                         const finalUrl = response.url.replace(proxy, '');
                         if (finalUrl && finalUrl !== url && !finalUrl.includes(proxy)) {
                             foundLinks.add(decodeURIComponent(finalUrl));
                         }
                         
-                        // Extract all links using universal patterns
                         const extracted = extractAllLinks(html, url);
                         extracted.forEach(link => foundLinks.add(link));
-                        
-                        if (foundLinks.size > 0) {
-                            addToTerminal(`> Found ${foundLinks.size} potential links`);
-                        }
                     }
                 } catch (e) {
                     addToTerminal(`> Wave failed: ${e.message.substring(0, 50)}`);
                 }
             }
             
-            // Return the most promising link
             return selectBestLink(Array.from(foundLinks));
         }
 
-        // MODE 2: AI ANALYZER - Smart pattern detection
+        // MODE 2: AI ANALYZER
         async function aiAnalyzerMode(url) {
             addToTerminal('> [AI ANALYZER] Scanning with neural patterns...');
             
@@ -836,17 +1110,13 @@
                     const response = await fetch(proxy + encodeURIComponent(url));
                     const html = await response.text();
                     
-                    // Analyze with all patterns
                     for (let pattern of UNIVERSAL_PATTERNS) {
                         const matches = html.matchAll(pattern);
                         for (let match of matches) {
                             let link = match[1] || match[0];
-                            
-                            // Clean and validate link
                             link = cleanUrl(link, url);
                             if (isValidUrl(link)) {
                                 foundLinks.add(link);
-                                addToTerminal(`> 🔍 Pattern match: ${link.substring(0, 60)}...`);
                             }
                         }
                     }
@@ -871,16 +1141,14 @@
             return selectBestLink(Array.from(foundLinks));
         }
 
-        // MODE 3: DRAGON - Brute force extraction
+        // MODE 3: DRAGON
         async function dragonMode(url) {
             addToTerminal('> [DRAGON] Activating brute force mode...');
             
             let foundLinks = new Set();
             
-            // Try direct fetch with all proxies
             for (let proxy of PROXY_ARMY) {
                 try {
-                    // GET request
                     const getResponse = await fetch(proxy + encodeURIComponent(url));
                     if (getResponse.ok) {
                         const finalUrl = getResponse.url.replace(proxy, '');
@@ -889,7 +1157,6 @@
                         }
                     }
                     
-                    // HEAD request for location header
                     const headResponse = await fetch(proxy + encodeURIComponent(url), {
                         method: 'HEAD'
                     });
@@ -924,13 +1191,12 @@
             return selectBestLink(Array.from(foundLinks));
         }
 
-        // MODE 4: PHANTOM - Stealth extraction
+        // MODE 4: PHANTOM
         async function phantomMode(url) {
             addToTerminal('> [PHANTOM] Moving in shadows...');
             
             let foundLinks = new Set();
             
-            // Try to get just the headers first
             for (let proxy of PROXY_ARMY.slice(0, 5)) {
                 try {
                     const response = await fetch(proxy + encodeURIComponent(url), {
@@ -945,7 +1211,6 @@
                         foundLinks.add(location);
                     }
                     
-                    // Check all redirects
                     let finalUrl = response.url.replace(proxy, '');
                     if (finalUrl && finalUrl !== url) {
                         foundLinks.add(decodeURIComponent(finalUrl));
@@ -957,7 +1222,7 @@
             return selectBestLink(Array.from(foundLinks));
         }
 
-        // Helper: Extract all links from HTML
+        // Helper functions
         function extractAllLinks(html, baseUrl) {
             let links = new Set();
             
@@ -975,19 +1240,13 @@
             return Array.from(links);
         }
 
-        // Helper: Clean and resolve URL
         function cleanUrl(url, baseUrl) {
-            url = url.trim();
+            url = url.trim().replace(/^['"]|['"]$/g, '');
             
-            // Remove quotes and whitespace
-            url = url.replace(/^['"]|['"]$/g, '');
-            
-            // Handle protocol-relative URLs
             if (url.startsWith('//')) {
                 url = 'https:' + url;
             }
             
-            // Handle relative URLs
             if (url.startsWith('/') && baseUrl) {
                 try {
                     const base = new URL(baseUrl);
@@ -995,7 +1254,6 @@
                 } catch {}
             }
             
-            // Handle relative paths
             if (!url.startsWith('http') && baseUrl) {
                 try {
                     const base = new URL(baseUrl);
@@ -1010,7 +1268,6 @@
             return url;
         }
 
-        // Helper: Validate URL
         function isValidUrl(string) {
             try {
                 new URL(string);
@@ -1020,7 +1277,6 @@
             }
         }
 
-        // Helper: Detect link type
         function detectLinkType(url) {
             if (url.includes('drive.google.com')) return 'GOOGLE DRIVE';
             if (url.includes('mediafire.com')) return 'MEDIAFIRE';
@@ -1029,17 +1285,15 @@
             if (url.includes('github.com')) return 'GITHUB';
             if (url.includes('.apk')) return 'APK FILE';
             if (url.includes('.exe')) return 'EXE FILE';
-            if (url.includes('.zip') || url.includes('.rar') || url.includes('.7z')) return 'ARCHIVE';
+            if (url.includes('.zip') || url.includes('.rar')) return 'ARCHIVE';
             if (url.includes('.pdf')) return 'PDF DOCUMENT';
             if (url.includes('.mp3') || url.includes('.mp4')) return 'MEDIA FILE';
             return 'DIRECT LINK';
         }
 
-        // Helper: Select the best link from candidates
         function selectBestLink(links) {
             if (!links || links.length === 0) return null;
             
-            // Prioritize by type
             const priorityOrder = [
                 'drive.google.com',
                 'mediafire.com',
@@ -1057,7 +1311,6 @@
                 if (found) return found;
             }
             
-            // Return the longest URL (usually the most complete)
             return links.reduce((a, b) => (a.length > b.length ? a : b));
         }
 
@@ -1087,8 +1340,8 @@
             qrDiv.innerHTML = '';
             new QRCode(qrDiv, {
                 text: link,
-                width: 256,
-                height: 256
+                width: Math.min(256, window.innerWidth - 100),
+                height: Math.min(256, window.innerWidth - 100)
             });
             
             modal.style.display = 'flex';
@@ -1098,9 +1351,14 @@
         window.onload = function() {
             document.getElementById('statProxies').textContent = PROXY_ARMY.length;
             document.getElementById('statMethods').textContent = UNIVERSAL_PATTERNS.length;
-            addToTerminal('> 🔥 LINK DESTROYER PRO READY FOR ACTION');
-            addToTerminal('> 📌 Supports: ANY shortener → ANY final link type');
+            
+            // Responsive QR code size
+            window.addEventListener('resize', function() {
+                if (document.getElementById('qrModal').style.display === 'flex') {
+                    scanQR(); // Regenerate QR with new size
+                }
+            });
         };
     </script>
 </body>
-</html>
+                                                    </html>
