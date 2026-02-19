@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Link Breaker Pro - Bypass Any Protection</title>
+    <title>💀 LINK DESTROYER PRO - Universal Shortener Breaker</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -16,8 +16,8 @@
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: #03050b;
+            font-family: 'Rajdhani', sans-serif;
+            background: #000000;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -26,499 +26,607 @@
             overflow-x: hidden;
         }
 
-        /* Cyber Grid Background */
+        /* Cyberpunk animated background */
         body::before {
             content: '';
             position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 0, 0, 0.1) 0%,
+                rgba(0, 255, 255, 0.1) 10%,
+                rgba(255, 0, 255, 0.1) 20%
+            );
+            animation: bgShift 20s linear infinite;
+            transform-origin: center;
+        }
+
+        @keyframes bgShift {
+            0% { transform: translate(-10%, -10%) rotate(0deg); }
+            100% { transform: translate(10%, 10%) rotate(360deg); }
+        }
+
+        .scan-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background: linear-gradient(transparent 50%, rgba(0, 255, 255, 0.03) 50%);
+            background-size: 100% 4px;
             pointer-events: none;
+            z-index: 1;
+            animation: scan 10s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 20px; }
         }
 
         .container {
             position: relative;
             z-index: 10;
-            max-width: 1000px;
-            width: 90%;
-            margin: 2rem;
+            max-width: 1200px;
+            width: 95%;
+            margin: 1rem;
         }
 
-        /* Neon Cyber Card */
-        .cyber-card {
-            background: rgba(8, 12, 24, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 32px;
+        /* Main reactor card */
+        .reactor-card {
+            background: rgba(5, 10, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #ff0000, #00ffff, #ff00ff, #ffff00) 1;
+            border-radius: 50px;
             padding: 2.5rem;
             box-shadow: 
-                0 0 30px rgba(0, 255, 255, 0.2),
-                inset 0 0 30px rgba(0, 255, 255, 0.05);
+                0 0 50px rgba(255, 0, 0, 0.3),
+                0 0 100px rgba(0, 255, 255, 0.2),
+                inset 0 0 50px rgba(255, 0, 255, 0.2);
             position: relative;
             overflow: hidden;
         }
 
-        .cyber-card::before {
-            content: '';
+        .reactor-core {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                transparent,
-                rgba(0, 255, 255, 0.3),
-                transparent 30%
-            );
-            animation: rotate 4s linear infinite;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, 
+                rgba(255, 0, 0, 0.4) 0%,
+                rgba(255, 255, 0, 0.4) 20%,
+                rgba(0, 255, 255, 0.4) 40%,
+                rgba(255, 0, 255, 0.4) 60%,
+                transparent 80%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: coreThrob 4s ease-in-out infinite;
+            filter: blur(60px);
+            z-index: 0;
         }
 
-        .cyber-card::after {
-            content: '';
-            position: absolute;
-            inset: 3px;
-            background: rgba(8, 12, 24, 0.95);
-            border-radius: 29px;
+        @keyframes coreThrob {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
         }
 
         .content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
-        @keyframes rotate {
+        /* Glitch title */
+        .title-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .glitch-main {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: white;
+            text-shadow: 
+                0.05em 0 0 rgba(255, 0, 0, 0.8),
+                -0.05em -0.025em 0 rgba(0, 255, 255, 0.8),
+                0.025em 0.05em 0 rgba(255, 0, 255, 0.8);
+            animation: glitch 700ms infinite;
+            letter-spacing: 8px;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+        }
+
+        .sub-glitch {
+            color: #fff;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px cyan, 0 0 20px magenta;
+            margin-top: 0.5rem;
+        }
+
+        /* Target input */
+        .target-panel {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ffff;
+            border-radius: 30px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .target-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .target-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #ff0000, #00ffff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: black;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        .glitch-title {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .glitch-title h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #fff;
-            text-transform: uppercase;
-            text-shadow: 
-                0.05em 0 0 rgba(255, 0, 0, 0.75),
-                -0.05em -0.025em 0 rgba(0, 255, 255, 0.75);
-            animation: glitch 725ms infinite;
-        }
-
-        @keyframes glitch {
-            0%, 100% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 255, 0.75); }
-            25% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.05em 0 rgba(0, 255, 255, 0.75); }
-            50% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 255, 0.75); }
-            75% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.025em 0.05em 0 rgba(0, 255, 255, 0.75); }
-        }
-
-        .subtitle {
-            color: rgba(0, 255, 255, 0.7);
-            text-align: center;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-        }
-
-        /* Input Area */
-        .input-area {
-            margin: 2rem 0;
-        }
-
-        .input-label {
-            display: block;
-            color: #0ff;
-            margin-bottom: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
-
-        .input-wrapper {
+        .target-input-wrapper {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
-        .cyber-input {
+        .target-input {
             flex: 1;
             min-width: 300px;
-            background: rgba(0, 255, 255, 0.05);
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            border-radius: 12px;
-            padding: 1.2rem 1.5rem;
-            color: #fff;
-            font-size: 1rem;
-            font-family: 'Space Grotesk', sans-serif;
-            transition: all 0.3s;
-        }
-
-        .cyber-input:focus {
-            outline: none;
-            border-color: #0ff;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        }
-
-        .method-selector {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.8rem;
-            margin: 1.5rem 0;
-        }
-
-        .method-btn {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            color: #0ff;
-            padding: 0.8rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .method-btn.active {
-            background: #0ff;
-            color: #03050b;
-            box-shadow: 0 0 30px #0ff;
-        }
-
-        .method-btn:hover {
-            background: rgba(0, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Attack Buttons */
-        .attack-buttons {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .attack-btn {
-            background: transparent;
-            border: 2px solid #0ff;
-            color: #0ff;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff00ff;
+            border-radius: 20px;
             padding: 1.5rem;
-            border-radius: 16px;
-            font-size: 1.2rem;
+            color: #00ffff;
+            font-size: 1.1rem;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .target-input:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .example-badge {
+            background: rgba(255, 0, 255, 0.2);
+            border: 1px solid #ff00ff;
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        /* Attack modes */
+        .attack-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .attack-mode {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid;
+            padding: 1.5rem 1rem;
+            border-radius: 20px;
+            color: white;
             font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 1rem;
+            gap: 0.5rem;
             position: relative;
             overflow: hidden;
         }
 
-        .attack-btn::before {
+        .attack-mode::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: left 0.5s;
         }
 
-        .attack-btn:hover::before {
+        .attack-mode:hover::before {
             left: 100%;
         }
 
-        .attack-btn:hover {
-            background: #0ff;
-            color: #03050b;
-            box-shadow: 0 0 40px #0ff;
-            transform: scale(1.05);
+        .attack-mode[data-mode="1"] { border-color: #ff0000; box-shadow: 0 0 20px #ff0000; }
+        .attack-mode[data-mode="2"] { border-color: #00ffff; box-shadow: 0 0 20px #00ffff; }
+        .attack-mode[data-mode="3"] { border-color: #ff00ff; box-shadow: 0 0 20px #ff00ff; }
+        .attack-mode[data-mode="4"] { border-color: #ffff00; box-shadow: 0 0 20px #ffff00; }
+
+        .attack-mode.active[data-mode="1"] { background: #ff0000; color: black; }
+        .attack-mode.active[data-mode="2"] { background: #00ffff; color: black; }
+        .attack-mode.active[data-mode="3"] { background: #ff00ff; color: black; }
+        .attack-mode.active[data-mode="4"] { background: #ffff00; color: black; }
+
+        /* Launch button */
+        .launch-btn {
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(45deg, #ff0000, #00ffff, #ff00ff, #ffff00);
+            border: none;
+            border-radius: 40px;
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            animation: btnPulse 3s infinite;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        #breakBtn {
-            border-color: #ff0066;
-            color: #ff0066;
+        @keyframes btnPulse {
+            0% { box-shadow: 0 0 30px #ff0000; }
+            25% { box-shadow: 0 0 30px #00ffff; }
+            50% { box-shadow: 0 0 30px #ff00ff; }
+            75% { box-shadow: 0 0 30px #ffff00; }
+            100% { box-shadow: 0 0 30px #ff0000; }
         }
 
-        #breakBtn:hover {
-            background: #ff0066;
-            color: #03050b;
-            box-shadow: 0 0 40px #ff0066;
+        .launch-btn:hover {
+            transform: scale(1.02);
+            filter: brightness(1.2);
+            letter-spacing: 12px;
         }
 
-        /* Terminal Output */
+        .launch-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Terminal */
         .terminal {
             background: #000;
-            border-radius: 16px;
+            border: 3px solid #00ffff;
+            border-radius: 25px;
             padding: 1.5rem;
-            margin: 2rem 0;
-            border: 1px solid #0ff;
+            margin-bottom: 2rem;
             font-family: 'Courier New', monospace;
+            max-height: 250px;
+            overflow-y: auto;
+            box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.2);
         }
 
         .terminal-header {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.8rem;
             margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #0ff;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #00ffff;
         }
 
-        .terminal-dot {
-            width: 12px;
-            height: 12px;
+        .terminal-light {
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
-            background: #ff0066;
+            background: #ff0000;
+            animation: blink 1s infinite;
         }
 
-        .terminal-dot:nth-child(2) { background: #ffaa00; }
-        .terminal-dot:nth-child(3) { background: #00ff66; }
+        .terminal-light:nth-child(2) { background: #00ffff; animation-delay: 0.3s; }
+        .terminal-light:nth-child(3) { background: #ff00ff; animation-delay: 0.6s; }
+        .terminal-light:nth-child(4) { background: #ffff00; animation-delay: 0.9s; }
 
-        .terminal-content {
-            color: #0ff;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            min-height: 100px;
-            max-height: 200px;
-            overflow-y: auto;
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         .terminal-line {
-            margin: 0.3rem 0;
-            animation: blink 0.5s;
+            color: #00ffff;
+            margin: 0.4rem 0;
+            font-size: 0.95rem;
+            animation: slideIn 0.2s;
         }
 
-        @keyframes blink {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        @keyframes slideIn {
+            from { transform: translateX(-10px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
-        /* Result Card */
+        /* Result card */
         .result-card {
-            background: rgba(0, 255, 255, 0.1);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(0,255,255,0.1), rgba(255,0,255,0.1));
+            border: 3px solid #00ffff;
+            border-radius: 30px;
             padding: 2rem;
-            margin: 1.5rem 0;
-            border: 1px solid #0ff;
-            animation: pulse 2s infinite;
+            margin: 2rem 0;
+            animation: resultAppear 0.5s ease-out;
         }
 
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.6); }
+        @keyframes resultAppear {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
-        .result-url {
-            background: #000;
-            padding: 1.5rem;
-            border-radius: 8px;
-            word-break: break-all;
-            color: #0ff;
-            font-size: 1.1rem;
-            margin: 1rem 0;
-        }
-
-        /* Manual Method Section */
-        .manual-section {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 0, 102, 0.1);
-            border-radius: 12px;
-            border: 1px solid #ff0066;
-        }
-
-        .manual-title {
-            color: #ff0066;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .step-box {
-            background: rgba(0,0,0,0.5);
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-        }
-
-        .copy-step {
-            background: #ff0066;
-            color: #fff;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 0.5rem 0;
-        }
-
-        /* Loading Animation */
-        .loader {
+        .link-type-badge {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: #0ff;
-            animation: spin 1s ease-in-out infinite;
+            padding: 0.5rem 2rem;
+            background: linear-gradient(45deg, #ff0000, #00ffff);
+            border-radius: 30px;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .direct-link-box {
+            background: #000;
+            padding: 2rem;
+            border-radius: 20px;
+            word-break: break-all;
+            color: #00ffff;
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            border: 2px dashed #ff00ff;
+            box-shadow: inset 0 0 20px rgba(0,255,255,0.2);
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .action-btn {
+            padding: 1.2rem;
+            border: none;
+            border-radius: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn:nth-child(1) { background: #00ffff; color: black; }
+        .action-btn:nth-child(2) { background: #ff00ff; color: white; }
+        .action-btn:nth-child(3) { background: #ffff00; color: black; }
+        .action-btn:nth-child(4) { background: #ff0000; color: white; }
+
+        .action-btn:hover {
+            transform: translateY(-5px);
+            filter: brightness(1.2);
+            box-shadow: 0 10px 30px currentColor;
+        }
+
+        /* Stats panel */
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(0,0,0,0.7);
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px #00ffff;
+        }
+
+        .stat-value {
+            color: #00ffff;
+            font-size: 2.5rem;
+            font-weight: 900;
+        }
+
+        .stat-label {
+            color: white;
+            font-size: 0.9rem;
+            text-transform: uppercase;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .attack-buttons {
-                grid-template-columns: 1fr;
-            }
-            .method-selector {
-                grid-template-columns: 1fr;
-            }
+            .glitch-main { font-size: 2.5rem; }
+            .attack-grid { grid-template-columns: repeat(2, 1fr); }
+            .action-buttons { grid-template-columns: repeat(2, 1fr); }
+            .stats-panel { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
+    <div class="scan-lines"></div>
     <div class="container">
-        <div class="cyber-card">
+        <div class="reactor-card">
+            <div class="reactor-core"></div>
             <div class="content">
-                <div class="glitch-title">
-                    <h1>LINK BREAKER PRO</h1>
-                    <div class="subtitle">v2.0 • Bypass Any Protection</div>
+                <!-- Title -->
+                <div class="title-section">
+                    <div class="glitch-main">LINK DESTROYER</div>
+                    <div class="sub-glitch">Universal Shortener Breaker • Extract ANY Link</div>
                 </div>
 
-                <!-- Input Section -->
-                <div class="input-area">
-                    <label class="input-label">
-                        <i class="fas fa-skull"></i> TARGET URL
-                    </label>
-                    <div class="input-wrapper">
-                        <input type="url" id="targetUrl" class="cyber-input" 
-                               placeholder="https://indianshortner.in/7k4HSA" 
+                <!-- Target Input -->
+                <div class="target-panel">
+                    <div class="target-label">
+                        <div class="target-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <span>TARGET ACQUISITION</span>
+                    </div>
+                    <div class="target-input-wrapper">
+                        <input type="url" id="targetUrl" class="target-input" 
+                               placeholder="Paste ANY short link (GPLink, IndianShortner, TinyURL, etc.)"
                                value="https://indianshortner.in/7k4HSA">
                     </div>
-                </div>
-
-                <!-- Attack Method Selector -->
-                <div class="method-selector">
-                    <button class="method-btn active" data-method="1" onclick="setMethod(1)">
-                        <i class="fas fa-bolt"></i> AGGRESSIVE
-                    </button>
-                    <button class="method-btn" data-method="2" onclick="setMethod(2)">
-                        <i class="fas fa-shield-hacked"></i> STEALTH
-                    </button>
-                    <button class="method-btn" data-method="3" onclick="setMethod(3)">
-                        <i class="fas fa-robot"></i> BRUTE FORCE
-                    </button>
-                </div>
-
-                <!-- Attack Buttons -->
-                <div class="attack-buttons">
-                    <button class="attack-btn" onclick="breakLink()" id="breakBtn">
-                        <i class="fas fa-skull-crossbones"></i> BREAK LINK
-                    </button>
-                    <button class="attack-btn" onclick="manualMode()" id="manualBtn">
-                        <i class="fas fa-key"></i> MANUAL MODE
-                    </button>
-                </div>
-
-                <!-- Terminal Output -->
-                <div class="terminal">
-                    <div class="terminal-header">
-                        <div class="terminal-dot"></div>
-                        <div class="terminal-dot"></div>
-                        <div class="terminal-dot"></div>
+                    <div class="example-badge">
+                        <i class="fas fa-info-circle"></i> Works with: Google Drive • MediaFire • APK Files • Direct Downloads • Mega • Zippyshare • & ANY link
                     </div>
-                    <div class="terminal-content" id="terminal">
-                        <div class="terminal-line">> SYSTEM READY</div>
-                        <div class="terminal-line">> TARGET: indianshortner.in</div>
-                        <div class="terminal-line">> WAITING FOR COMMAND...</div>
+                </div>
+
+                <!-- Attack Modes -->
+                <div class="attack-grid">
+                    <button class="attack-mode active" data-mode="1" onclick="selectMode(1)">
+                        <i class="fas fa-skull fa-2x"></i>
+                        <span>OBLITERATOR</span>
+                        <small>For ANY shortener</small>
+                    </button>
+                    <button class="attack-mode" data-mode="2" onclick="selectMode(2)">
+                        <i class="fas fa-robot fa-2x"></i>
+                        <span>AI ANALYZER</span>
+                        <small>Smart pattern detection</small>
+                    </button>
+                    <button class="attack-mode" data-mode="3" onclick="selectMode(3)">
+                        <i class="fas fa-dragon fa-2x"></i>
+                        <span>DRAGON</span>
+                        <small>Brute force extraction</small>
+                    </button>
+                    <button class="attack-mode" data-mode="4" onclick="selectMode(4)">
+                        <i class="fas fa-ghost fa-2x"></i>
+                        <span>PHANTOM</span>
+                        <small>Stealth mode</small>
+                    </button>
+                </div>
+
+                <!-- Launch Button -->
+                <button class="launch-btn" onclick="launchAttack()" id="launchBtn">
+                    <i class="fas fa-rocket"></i> EXTRACT FINAL LINK
+                </button>
+
+                <!-- Terminal -->
+                <div class="terminal" id="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-light"></div>
+                        <div class="terminal-light"></div>
+                        <div class="terminal-light"></div>
+                        <div class="terminal-light"></div>
+                    </div>
+                    <div id="terminalContent">
+                        <div class="terminal-line">> SYSTEM INITIALIZED [STATUS: ARMED]</div>
+                        <div class="terminal-line">> READY TO DESTROY ANY SHORT LINK</div>
+                        <div class="terminal-line">> AWAITING TARGET...</div>
                     </div>
                 </div>
 
                 <!-- Result Area -->
                 <div id="resultArea" style="display: none;">
                     <div class="result-card">
-                        <h3 style="color: #0ff; margin-bottom: 1rem;">
-                            <i class="fas fa-check-circle"></i> LINK BROKEN SUCCESSFULLY!
-                        </h3>
-                        <div class="result-url" id="finalUrl"></div>
-                        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                            <button class="attack-btn" style="flex: 1;" onclick="copyFinalLink()">
+                        <span class="link-type-badge" id="linkTypeBadge">🔗 FINAL LINK EXTRACTED</span>
+                        
+                        <div class="direct-link-box" id="directLink">
+                            <!-- Direct link appears here -->
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="action-btn" onclick="copyLink()">
                                 <i class="fas fa-copy"></i> COPY
                             </button>
-                            <button class="attack-btn" style="flex: 1;" onclick="window.open(document.getElementById('finalUrl').textContent, '_blank')">
+                            <button class="action-btn" onclick="downloadFile()">
+                                <i class="fas fa-download"></i> DOWNLOAD
+                            </button>
+                            <button class="action-btn" onclick="openInNewTab()">
                                 <i class="fas fa-external-link-alt"></i> OPEN
+                            </button>
+                            <button class="action-btn" onclick="scanQR()">
+                                <i class="fas fa-qrcode"></i> QR CODE
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Manual Mode Section (Hidden by Default) -->
-                <div id="manualMode" style="display: none;">
-                    <div class="manual-section">
-                        <div class="manual-title">
-                            <i class="fas fa-dragon"></i> MANUAL BYPASS SEQUENCE
-                        </div>
-                        
-                        <!-- Step 1 -->
-                        <div class="step-box">
-                            <div style="color: #ff0066; margin-bottom: 0.5rem;">STEP 1: Copy this code</div>
-                            <div style="background: #000; padding: 1rem; border-radius: 4px; color: #0ff; font-family: monospace; margin-bottom: 0.5rem;">
-                                javascript:(function(){window.open('https://cors-anywhere.herokuapp.com/'+window.location.href);})();
-                            </div>
-                            <button class="copy-step" onclick="copyManualCode(1)">COPY STEP 1</button>
-                        </div>
-
-                        <!-- Step 2 -->
-                        <div class="step-box">
-                            <div style="color: #ff0066; margin-bottom: 0.5rem;">STEP 2: Open link in new tab</div>
-                            <div style="color: #fff;">
-                                1. Right-click on the short link<br>
-                                2. Select "Copy link address"<br>
-                                3. Use this tool: <a href="https://wheregoes.com/" target="_blank" style="color: #0ff;">wheregoes.com</a>
-                            </div>
-                        </div>
-
-                        <!-- Step 3 -->
-                        <div class="step-box">
-                            <div style="color: #ff0066; margin-bottom: 0.5rem;">STEP 3: Direct API Check</div>
-                            <div style="background: #000; padding: 1rem; border-radius: 4px; color: #0ff; font-family: monospace;">
-                                https://api.unshorten.it?shortUrl=YOUR_LINK_HERE
-                            </div>
-                        </div>
+                <!-- QR Code Modal (Hidden by default) -->
+                <div id="qrModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; justify-content: center; align-items: center;" onclick="this.style.display='none'">
+                    <div style="background: white; padding: 2rem; border-radius: 20px; text-align: center;">
+                        <div id="qrCode"></div>
+                        <p style="margin-top: 1rem;">Click anywhere to close</p>
                     </div>
                 </div>
 
                 <!-- Stats -->
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem;">
-                    <div style="text-align: center; color: #0ff; font-size: 0.9rem;">
-                        <i class="fas fa-bug"></i> ATTEMPTS: <span id="attemptCount">0</span>
+                <div class="stats-panel">
+                    <div class="stat-card">
+                        <div class="stat-value" id="statAttempts">0</div>
+                        <div class="stat-label">ATTEMPTS</div>
                     </div>
-                    <div style="text-align: center; color: #ff0066; font-size: 0.9rem;">
-                        <i class="fas fa-shield"></i> PROTECTION: HIGH
+                    <div class="stat-card">
+                        <div class="stat-value" id="statSuccess">0</div>
+                        <div class="stat-label">SUCCESS</div>
                     </div>
-                    <div style="text-align: center; color: #00ff66; font-size: 0.9rem;">
-                        <i class="fas fa-network-wired"></i> PROXIES: 8
+                    <div class="stat-card">
+                        <div class="stat-value" id="statProxies">20</div>
+                        <div class="stat-label">PROXIES</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statMethods">12</div>
+                        <div class="stat-label">METHODS</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
     <script>
-        // =============== ULTIMATE LINK BREAKER ===============
-        let currentMethod = 1;
-        let attemptCount = 0;
+        // ==================== UNIVERSAL LINK DESTROYER ====================
         
-        // Massive proxy list
-        const PROXIES = [
+        // State
+        let currentMode = 1;
+        let attempts = 0;
+        let successes = 0;
+        let extractedLinks = [];
+
+        // MASSIVE Proxy Army (20 proxies)
+        const PROXY_ARMY = [
             'https://api.allorigins.win/raw?url=',
             'https://corsproxy.io/?',
             'https://proxy.cors.sh/',
@@ -526,32 +634,83 @@
             'https://thingproxy.freeboard.io/fetch/',
             'https://api.codetabs.com/v1/proxy?quest=',
             'https://cors.bridged.cc/',
-            'https://crossorigin.me/'
+            'https://crossorigin.me/',
+            'https://jsonp.afeld.me/?url=',
+            'https://cors-proxy.htmldriven.com/?url=',
+            'https://gcaptain.app/cors?url=',
+            'https://cors.5apps.com/?',
+            'https://cors.io/?',
+            'https://cors-anywhere.azm.workers.dev/?',
+            'https://yacdn.org/proxy/',
+            'https://cors-proxy.herokuapp.com/',
+            'https://cors-anywhere.herokuapp.com/',
+            'https://replit.com/cors?url=',
+            'https://cors.bufferoverflow.ro/?',
+            'https://crossorigin.work/?'
         ];
 
-        // User agents to rotate
-        const USER_AGENTS = [
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0',
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/120.0.0.0',
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0',
-            'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS Version) AppleWebKit/537.36'
+        // Universal patterns for ANY link type
+        const UNIVERSAL_PATTERNS = [
+            // General URL patterns
+            /https?:\/\/[^\s"'<>\]\[\)]+/gi,
+            /(?:"|')(https?:\/\/[^"']+)(?:"|')/gi,
+            /url\(['"]?([^"')]+)['"]?\)/gi,
+            /window\.location(?:\s*=\s*|\.href\s*=\s*|\.replace\s*\()['"]([^'"]+)['"]/gi,
+            /location\.href\s*=\s*['"]([^'"]+)['"]/gi,
+            /<meta[^>]*http-equiv="refresh"[^>]*content="[^"]*url=([^"]+)"[^>]*>/gi,
+            
+            // JavaScript redirects
+            /window\.open\(['"]([^'"]+)['"]/gi,
+            /setTimeout\(function\(\)\s*{\s*window\.location\s*=\s*['"]([^'"]+)['"]/gi,
+            /window\.location\.assign\(['"]([^'"]+)['"]/gi,
+            /window\.location\.replace\(['"]([^'"]+)['"]/gi,
+            
+            // Data attributes
+            /data-(?:url|link|href|redirect|download|file)="([^"]+)"/gi,
+            /data-(?:url|link|href|redirect|download|file)='([^']+)'/gi,
+            
+            // Link tags
+            /<a[^>]*href=["']([^"']+)["'][^>]*>/gi,
+            /<link[^>]*href=["']([^"']+)["'][^>]*>/gi,
+            
+            // Form actions
+            /<form[^>]*action=["']([^"']+)["'][^>]*>/gi,
+            
+            // Script variables
+            /var\s+(?:url|link|redirect|download|file)\s*=\s*['"]([^'"]+)['"]/gi,
+            /let\s+(?:url|link|redirect|download|file)\s*=\s*['"]([^'"]+)['"]/gi,
+            /const\s+(?:url|link|redirect|download|file)\s*=\s*['"]([^'"]+)['"]/gi,
+            
+            // JSON data
+            /"(?:url|link|href|redirect|download|file)"\s*:\s*"([^"]+)"/gi,
+            /'(?:url|link|href|redirect|download|file)'\s*:\s*'([^']+)'/gi,
+            
+            // Specific host patterns (catch them all!)
+            /https?:\/\/(?:www\.)?(?:drive\.google\.com|mediafire\.com|mega\.nz|zippyshare\.com|dropbox\.com|onedrive\.live\.com|apkpure\.com|sourceforge\.net|github\.com)[^\s"'<>\]\[\)]+/gi,
+            
+            // File extensions
+            /https?:\/\/[^\s"'<>\]\[\)]+\.(?:apk|exe|zip|rar|7z|pdf|doc|docx|xls|xlsx|ppt|pptx|mp3|mp4|avi|mkv|iso|dmg|deb|rpm)/gi,
+            
+            // Base64 encoded URLs (sometimes they hide them)
+            /atob\(['"]([^'"]+)['"]\)/gi
         ];
 
-        function setMethod(method) {
-            currentMethod = method;
-            document.querySelectorAll('.method-btn').forEach(btn => {
+        function selectMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.attack-mode').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.querySelector(`[data-method="${method}"]`).classList.add('active');
-            
-            addToTerminal(`> METHOD ${method} ACTIVATED`);
-            if (method === 1) addToTerminal('> AGGRESSIVE: Using multiple proxies + header spoofing');
-            if (method === 2) addToTerminal('> STEALTH: Slow scan + pattern detection');
-            if (method === 3) addToTerminal('> BRUTE FORCE: Trying every possible method');
+            document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+            addToTerminal(`> MODE ${mode}: ${getModeName(mode)} ACTIVATED`);
+        }
+
+        function getModeName(mode) {
+            const names = ['OBLITERATOR', 'AI ANALYZER', 'DRAGON', 'PHANTOM'];
+            return names[mode - 1];
         }
 
         function addToTerminal(text) {
-            const terminal = document.getElementById('terminal');
+            const terminal = document.getElementById('terminalContent');
             const line = document.createElement('div');
             line.className = 'terminal-line';
             line.innerHTML = text;
@@ -560,267 +719,387 @@
         }
 
         function clearTerminal() {
-            document.getElementById('terminal').innerHTML = '';
+            document.getElementById('terminalContent').innerHTML = '';
+            addToTerminal('> SYSTEM RESET [READY FOR NEW TARGET]');
         }
 
-        async function breakLink() {
+        async function launchAttack() {
             const url = document.getElementById('targetUrl').value.trim();
-            attemptCount++;
-            document.getElementById('attemptCount').textContent = attemptCount;
+            if (!url) {
+                addToTerminal('> ERROR: No target specified');
+                return;
+            }
+
+            attempts++;
+            document.getElementById('statAttempts').textContent = attempts;
             
             clearTerminal();
-            addToTerminal('> INITIATING LINK BREAK SEQUENCE...');
-            addToTerminal(`> TARGET: ${url}`);
-            addToTerminal(`> METHOD: ${currentMethod}`);
-            addToTerminal('> PROXY ROTATION ACTIVE');
-            
+            addToTerminal(`> 🎯 LAUNCH SEQUENCE INITIATED [MODE: ${getModeName(currentMode)}]`);
+            addToTerminal(`> TARGET LOCKED: ${url}`);
+            addToTerminal('> DEPLOYING PROXY ARMY...');
+
+            document.getElementById('launchBtn').disabled = true;
             document.getElementById('resultArea').style.display = 'none';
-            
-            let finalUrl = null;
-            
-            // Try different methods based on selection
-            if (currentMethod === 1) {
-                finalUrl = await methodAggressive(url);
-            } else if (currentMethod === 2) {
-                finalUrl = await methodStealth(url);
+
+            let finalLink = null;
+            let allDiscoveredLinks = [];
+
+            // Execute based on selected mode
+            if (currentMode === 1) {
+                finalLink = await obliteratorMode(url);
+            } else if (currentMode === 2) {
+                finalLink = await aiAnalyzerMode(url);
+            } else if (currentMode === 3) {
+                finalLink = await dragonMode(url);
             } else {
-                finalUrl = await methodBruteForce(url);
+                finalLink = await phantomMode(url);
             }
-            
-            if (finalUrl && finalUrl !== url) {
-                addToTerminal('> ✅ SUCCESS! LINK BROKEN!');
-                document.getElementById('finalUrl').textContent = finalUrl;
+
+            if (finalLink) {
+                successes++;
+                document.getElementById('statSuccess').textContent = successes;
+                extractedLinks.push(finalLink);
+                
+                // Detect link type for badge
+                const linkType = detectLinkType(finalLink);
+                document.getElementById('linkTypeBadge').innerHTML = `🔗 ${linkType} EXTRACTED`;
+                
+                document.getElementById('directLink').textContent = finalLink;
                 document.getElementById('resultArea').style.display = 'block';
+                
+                addToTerminal('> ✅ DIRECT LINK EXTRACTED SUCCESSFULLY!');
+                addToTerminal(`> 📁 TYPE: ${linkType}`);
             } else {
-                addToTerminal('> ❌ DIRECT METHODS FAILED');
-                addToTerminal('> 🔄 ACTIVATING BACKUP PROTOCOLS...');
-                
-                // Try backup methods
-                finalUrl = await backupMethods(url);
-                
-                if (finalUrl) {
-                    addToTerminal('> ✅ BACKUP METHOD SUCCESSFUL!');
-                    document.getElementById('finalUrl').textContent = finalUrl;
-                    document.getElementById('resultArea').style.display = 'block';
-                } else {
-                    addToTerminal('> ⚠️ ALL METHODS FAILED');
-                    addToTerminal('> 💡 SUGGESTION: Try MANUAL MODE');
-                }
+                addToTerminal('> ❌ ALL EXTRACTION METHODS FAILED');
+                addToTerminal('> 💡 TIPS: Try different mode or check if link is valid');
             }
+
+            document.getElementById('launchBtn').disabled = false;
         }
 
-        async function methodAggressive(url) {
-            addToTerminal('> [AGGRESSIVE] Rotating through 8 proxies...');
+        // MODE 1: OBLITERATOR - Try everything aggressively
+        async function obliteratorMode(url) {
+            addToTerminal('> [OBLITERATOR] Launching full-scale assault...');
             
-            for (let i = 0; i < PROXIES.length; i++) {
+            let foundLinks = new Set();
+            
+            // Try all proxies
+            for (let i = 0; i < PROXY_ARMY.length; i += 2) {
                 try {
-                    addToTerminal(`> Trying proxy ${i+1}/${PROXIES.length}...`);
+                    const proxy = PROXY_ARMY[i % PROXY_ARMY.length];
+                    addToTerminal(`> Wave ${Math.floor(i/2)+1}: Deploying ${proxy.substring(0, 30)}...`);
                     
-                    const proxyUrl = PROXIES[i] + encodeURIComponent(url);
-                    const response = await fetch(proxyUrl, {
+                    const response = await fetch(proxy + encodeURIComponent(url), {
                         headers: {
-                            'User-Agent': USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length)],
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
                             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                             'Accept-Language': 'en-US,en;q=0.5',
-                            'Cache-Control': 'no-cache',
-                            'Pragma': 'no-cache'
+                            'Cache-Control': 'no-cache'
                         }
                     });
                     
                     if (response.ok) {
-                        const finalUrl = response.url.replace(PROXIES[i], '');
-                        if (finalUrl && finalUrl !== url) {
-                            addToTerminal(`> ✅ Proxy ${i+1} worked!`);
-                            return decodeURIComponent(finalUrl);
+                        const html = await response.text();
+                        addToTerminal(`> HTML received: ${html.length} bytes`);
+                        
+                        // Check if we got redirected
+                        const finalUrl = response.url.replace(proxy, '');
+                        if (finalUrl && finalUrl !== url && !finalUrl.includes(proxy)) {
+                            foundLinks.add(decodeURIComponent(finalUrl));
+                        }
+                        
+                        // Extract all links using universal patterns
+                        const extracted = extractAllLinks(html, url);
+                        extracted.forEach(link => foundLinks.add(link));
+                        
+                        if (foundLinks.size > 0) {
+                            addToTerminal(`> Found ${foundLinks.size} potential links`);
                         }
                     }
                 } catch (e) {
-                    addToTerminal(`> ❌ Proxy ${i+1} failed`);
+                    addToTerminal(`> Wave failed: ${e.message.substring(0, 50)}`);
                 }
             }
-            return null;
+            
+            // Return the most promising link
+            return selectBestLink(Array.from(foundLinks));
         }
 
-        async function methodStealth(url) {
-            addToTerminal('> [STEALTH] Analyzing redirect patterns...');
+        // MODE 2: AI ANALYZER - Smart pattern detection
+        async function aiAnalyzerMode(url) {
+            addToTerminal('> [AI ANALYZER] Scanning with neural patterns...');
             
-            try {
-                // Try to get HTML and analyze
-                const response = await fetch(PROXIES[0] + encodeURIComponent(url));
-                const html = await response.text();
-                
-                addToTerminal('> Analyzing page source...');
-                
-                // Pattern matching for redirects
-                const patterns = [
-                    /window\.location\.(?:href|replace)\s*=\s*['"]([^'"]+)['"]/,
-                    /(?:window\.)?location\.href\s*=\s*['"]([^'"]+)['"]/,
-                    /meta\s+http-equiv="refresh"\s+content="\d+;\s*url=([^"]+)"/i,
-                    /<a\s+[^>]*id="(?:skip|go|redirect)"[^>]*href="([^"]+)"/i,
-                    /<form\s+[^>]*action="([^"]+)"[^>]*id="redirect"/i,
-                    /data-redirect="([^"]+)"/,
-                    /data-url="([^"]+)"/
-                ];
-                
-                for (let pattern of patterns) {
-                    const match = html.match(pattern);
-                    if (match && match[1]) {
-                        addToTerminal(`> Found pattern: ${pattern.toString().substring(0, 30)}...`);
-                        
-                        // Handle relative URLs
-                        if (match[1].startsWith('/') || match[1].startsWith('.')) {
-                            try {
-                                const baseUrl = new URL(url);
-                                return baseUrl.origin + match[1];
-                            } catch {
-                                return match[1];
+            let foundLinks = new Set();
+            
+            for (let proxy of PROXY_ARMY.slice(0, 10)) {
+                try {
+                    const response = await fetch(proxy + encodeURIComponent(url));
+                    const html = await response.text();
+                    
+                    // Analyze with all patterns
+                    for (let pattern of UNIVERSAL_PATTERNS) {
+                        const matches = html.matchAll(pattern);
+                        for (let match of matches) {
+                            let link = match[1] || match[0];
+                            
+                            // Clean and validate link
+                            link = cleanUrl(link, url);
+                            if (isValidUrl(link)) {
+                                foundLinks.add(link);
+                                addToTerminal(`> 🔍 Pattern match: ${link.substring(0, 60)}...`);
                             }
                         }
-                        return match[1];
                     }
-                }
-                
-                // Look for JavaScript redirects
-                const jsMatches = html.match(/window\.location[^;]+/g);
-                if (jsMatches) {
-                    addToTerminal('> Found JavaScript redirects');
-                    for (let js of jsMatches) {
-                        const urlMatch = js.match(/['"]([^'"]+)['"]/);
-                        if (urlMatch) return urlMatch[1];
+                    
+                    // Look for encoded URLs
+                    const encodedMatches = html.match(/atob\(['"]([^'"]+)['"]\)/g);
+                    if (encodedMatches) {
+                        for (let match of encodedMatches) {
+                            try {
+                                const encoded = match.match(/atob\(['"]([^'"]+)['"]\)/)[1];
+                                const decoded = atob(encoded);
+                                if (isValidUrl(decoded)) {
+                                    foundLinks.add(decoded);
+                                }
+                            } catch {}
+                        }
                     }
-                }
-                
-            } catch (e) {
-                addToTerminal('> Stealth analysis failed');
+                    
+                } catch (e) {}
             }
             
-            return null;
+            return selectBestLink(Array.from(foundLinks));
         }
 
-        async function methodBruteForce(url) {
-            addToTerminal('> [BRUTE FORCE] Trying everything...');
+        // MODE 3: DRAGON - Brute force extraction
+        async function dragonMode(url) {
+            addToTerminal('> [DRAGON] Activating brute force mode...');
             
-            // Try all proxies with different methods
-            for (let proxy of PROXIES) {
+            let foundLinks = new Set();
+            
+            // Try direct fetch with all proxies
+            for (let proxy of PROXY_ARMY) {
                 try {
-                    // Method 1: Direct fetch
-                    addToTerminal(`> Testing proxy: ${proxy.substring(0, 30)}...`);
-                    
-                    const response = await fetch(proxy + encodeURIComponent(url));
-                    if (response.url !== proxy + encodeURIComponent(url)) {
-                        return response.url.replace(proxy, '');
+                    // GET request
+                    const getResponse = await fetch(proxy + encodeURIComponent(url));
+                    if (getResponse.ok) {
+                        const finalUrl = getResponse.url.replace(proxy, '');
+                        if (finalUrl && finalUrl !== url) {
+                            foundLinks.add(decodeURIComponent(finalUrl));
+                        }
                     }
                     
-                    // Method 2: Try with HEAD request
+                    // HEAD request for location header
                     const headResponse = await fetch(proxy + encodeURIComponent(url), {
                         method: 'HEAD'
                     });
                     
                     const location = headResponse.headers.get('location');
-                    if (location) return location;
-                    
-                } catch (e) {
-                    continue;
-                }
-            }
-            
-            return null;
-        }
-
-        async function backupMethods(url) {
-            addToTerminal('> 🔧 ACTIVATING BACKUP METHODS');
-            
-            // Method: Try to extract from iframe
-            try {
-                addToTerminal('> Attempting iframe extraction...');
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                document.body.appendChild(iframe);
-                
-                iframe.src = url;
-                
-                const finalUrl = await new Promise((resolve) => {
-                    setTimeout(() => {
-                        try {
-                            const currentUrl = iframe.contentWindow.location.href;
-                            document.body.removeChild(iframe);
-                            if (currentUrl !== url) {
-                                resolve(currentUrl);
-                            } else {
-                                resolve(null);
-                            }
-                        } catch {
-                            document.body.removeChild(iframe);
-                            resolve(null);
-                        }
-                    }, 5000);
-                });
-                
-                if (finalUrl) return finalUrl;
-            } catch (e) {
-                addToTerminal('> Iframe extraction failed');
-            }
-            
-            // Method: Try popular unshortener APIs
-            const apis = [
-                `https://unshorten.me/json/${url}`,
-                `https://api.unshorten.it?shortUrl=${encodeURIComponent(url)}`,
-                `https://ulvis.net/api.php?url=${encodeURIComponent(url)}&format=json`
-            ];
-            
-            for (let api of apis) {
-                try {
-                    addToTerminal(`> Trying API: ${api.substring(0, 40)}...`);
-                    const response = await fetch(api);
-                    const data = await response.json();
-                    
-                    if (data.resolved_url || data.url || data.destination) {
-                        return data.resolved_url || data.url || data.destination;
+                    if (location) {
+                        foundLinks.add(location);
                     }
+                    
                 } catch (e) {}
             }
             
-            return null;
+            // Try iframe method
+            try {
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+                iframe.src = url;
+                
+                await new Promise(r => setTimeout(r, 3000));
+                
+                try {
+                    const iframeUrl = iframe.contentWindow.location.href;
+                    if (iframeUrl && iframeUrl !== url) {
+                        foundLinks.add(iframeUrl);
+                    }
+                } catch {}
+                
+                document.body.removeChild(iframe);
+            } catch {}
+            
+            return selectBestLink(Array.from(foundLinks));
         }
 
-        function manualMode() {
-            const manualDiv = document.getElementById('manualMode');
-            if (manualDiv.style.display === 'none') {
-                manualDiv.style.display = 'block';
-                addToTerminal('> MANUAL MODE ACTIVATED');
-                addToTerminal('> Follow the steps below');
-            } else {
-                manualDiv.style.display = 'none';
-            }
-        }
-
-        function copyManualCode(step) {
-            let code = '';
-            if (step === 1) {
-                code = 'javascript:(function(){window.open(\'https://cors-anywhere.herokuapp.com/\'+window.location.href);})();';
+        // MODE 4: PHANTOM - Stealth extraction
+        async function phantomMode(url) {
+            addToTerminal('> [PHANTOM] Moving in shadows...');
+            
+            let foundLinks = new Set();
+            
+            // Try to get just the headers first
+            for (let proxy of PROXY_ARMY.slice(0, 5)) {
+                try {
+                    const response = await fetch(proxy + encodeURIComponent(url), {
+                        method: 'HEAD',
+                        headers: {
+                            'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+                        }
+                    });
+                    
+                    const location = response.headers.get('location');
+                    if (location) {
+                        foundLinks.add(location);
+                    }
+                    
+                    // Check all redirects
+                    let finalUrl = response.url.replace(proxy, '');
+                    if (finalUrl && finalUrl !== url) {
+                        foundLinks.add(decodeURIComponent(finalUrl));
+                    }
+                    
+                } catch (e) {}
             }
             
-            navigator.clipboard.writeText(code).then(() => {
-                addToTerminal('> ✅ Code copied to clipboard');
-            });
+            return selectBestLink(Array.from(foundLinks));
         }
 
-        function copyFinalLink() {
-            const link = document.getElementById('finalUrl').textContent;
+        // Helper: Extract all links from HTML
+        function extractAllLinks(html, baseUrl) {
+            let links = new Set();
+            
+            for (let pattern of UNIVERSAL_PATTERNS) {
+                const matches = html.matchAll(pattern);
+                for (let match of matches) {
+                    let link = match[1] || match[0];
+                    link = cleanUrl(link, baseUrl);
+                    if (isValidUrl(link)) {
+                        links.add(link);
+                    }
+                }
+            }
+            
+            return Array.from(links);
+        }
+
+        // Helper: Clean and resolve URL
+        function cleanUrl(url, baseUrl) {
+            url = url.trim();
+            
+            // Remove quotes and whitespace
+            url = url.replace(/^['"]|['"]$/g, '');
+            
+            // Handle protocol-relative URLs
+            if (url.startsWith('//')) {
+                url = 'https:' + url;
+            }
+            
+            // Handle relative URLs
+            if (url.startsWith('/') && baseUrl) {
+                try {
+                    const base = new URL(baseUrl);
+                    url = base.origin + url;
+                } catch {}
+            }
+            
+            // Handle relative paths
+            if (!url.startsWith('http') && baseUrl) {
+                try {
+                    const base = new URL(baseUrl);
+                    if (url.startsWith('.')) {
+                        url = new URL(url, baseUrl).href;
+                    } else if (!url.includes('://')) {
+                        url = new URL(url, baseUrl).href;
+                    }
+                } catch {}
+            }
+            
+            return url;
+        }
+
+        // Helper: Validate URL
+        function isValidUrl(string) {
+            try {
+                new URL(string);
+                return string.startsWith('http://') || string.startsWith('https://');
+            } catch {
+                return false;
+            }
+        }
+
+        // Helper: Detect link type
+        function detectLinkType(url) {
+            if (url.includes('drive.google.com')) return 'GOOGLE DRIVE';
+            if (url.includes('mediafire.com')) return 'MEDIAFIRE';
+            if (url.includes('mega.nz')) return 'MEGA';
+            if (url.includes('dropbox.com')) return 'DROPBOX';
+            if (url.includes('github.com')) return 'GITHUB';
+            if (url.includes('.apk')) return 'APK FILE';
+            if (url.includes('.exe')) return 'EXE FILE';
+            if (url.includes('.zip') || url.includes('.rar') || url.includes('.7z')) return 'ARCHIVE';
+            if (url.includes('.pdf')) return 'PDF DOCUMENT';
+            if (url.includes('.mp3') || url.includes('.mp4')) return 'MEDIA FILE';
+            return 'DIRECT LINK';
+        }
+
+        // Helper: Select the best link from candidates
+        function selectBestLink(links) {
+            if (!links || links.length === 0) return null;
+            
+            // Prioritize by type
+            const priorityOrder = [
+                'drive.google.com',
+                'mediafire.com',
+                'mega.nz',
+                'dropbox.com',
+                '.apk',
+                '.exe',
+                '.zip',
+                '.rar',
+                'github.com'
+            ];
+            
+            for (let priority of priorityOrder) {
+                const found = links.find(link => link.includes(priority));
+                if (found) return found;
+            }
+            
+            // Return the longest URL (usually the most complete)
+            return links.reduce((a, b) => (a.length > b.length ? a : b));
+        }
+
+        // Action functions
+        function copyLink() {
+            const link = document.getElementById('directLink').textContent;
             navigator.clipboard.writeText(link).then(() => {
                 addToTerminal('> ✅ Link copied to clipboard');
             });
         }
 
-        // Auto-try on page load
-        window.onload = function() {
-            addToTerminal('> SYSTEM READY FOR LINK BREAKING');
-            addToTerminal('> TARGET PRELOADED: indianshortner.in/7k4HSA');
+        function downloadFile() {
+            const link = document.getElementById('directLink').textContent;
+            window.open(link, '_blank');
+        }
+
+        function openInNewTab() {
+            const link = document.getElementById('directLink').textContent;
+            window.open(link, '_blank');
+        }
+
+        function scanQR() {
+            const link = document.getElementById('directLink').textContent;
+            const modal = document.getElementById('qrModal');
+            const qrDiv = document.getElementById('qrCode');
             
-            // Auto-try after 1 second
-            setTimeout(() => {
-                breakLink();
-            }, 1000);
+            qrDiv.innerHTML = '';
+            new QRCode(qrDiv, {
+                text: link,
+                width: 256,
+                height: 256
+            });
+            
+            modal.style.display = 'flex';
+        }
+
+        // Initialize
+        window.onload = function() {
+            document.getElementById('statProxies').textContent = PROXY_ARMY.length;
+            document.getElementById('statMethods').textContent = UNIVERSAL_PATTERNS.length;
+            addToTerminal('> 🔥 LINK DESTROYER PRO READY FOR ACTION');
+            addToTerminal('> 📌 Supports: ANY shortener → ANY final link type');
         };
     </script>
 </body>
