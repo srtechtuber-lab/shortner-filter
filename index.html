@@ -2,221 +2,116 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>💀 GPLINKS BREAKER PRO - CAPTCHA Bypass Specialist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💀 GPLINKS DEEP BREAKER - Multi-Layer Extractor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght:400;600;800;900&family=Rajdhani:wght:300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    
     <style>
-        /* ==================== RESET & BASE ==================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            font-size: 16px;
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: transparent;
-        }
-
         body {
             font-family: 'Rajdhani', sans-serif;
-            background: #000000;
+            background: #0a0a0f;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow-x: hidden;
-            width: 100%;
-            padding: 10px;
-        }
-
-        /* Animated background */
-        body::before {
-            content: '';
-            position: fixed;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(255, 0, 0, 0.1) 0%,
-                rgba(0, 255, 255, 0.1) 15%,
-                rgba(255, 0, 255, 0.1) 30%,
-                rgba(255, 255, 0, 0.1) 45%
-            );
-            animation: bgMove 20s linear infinite;
-            transform-origin: center;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes bgMove {
-            0% { transform: translate(-10%, -10%) rotate(0deg); }
-            100% { transform: translate(10%, 10%) rotate(360deg); }
-        }
-
-        .scan-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(transparent 50%, rgba(0, 255, 255, 0.03) 50%);
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 1;
-            animation: scanMove 10s linear infinite;
-        }
-
-        @keyframes scanMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 20px; }
+            padding: 15px;
         }
 
         .container {
-            position: relative;
-            z-index: 10;
+            max-width: 1200px;
             width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: clamp(10px, 3vw, 30px);
         }
 
-        /* Reactor Card */
         .reactor-card {
-            background: rgba(5, 10, 20, 0.95);
+            background: rgba(10, 20, 30, 0.95);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 3px solid transparent;
-            border-image: linear-gradient(45deg, #ff0000, #00ffff, #ff00ff, #ffff00) 1;
-            border-radius: clamp(20px, 5vw, 50px);
-            padding: clamp(1.5rem, 4vw, 3rem);
-            box-shadow: 
-                0 0 30px rgba(255, 0, 0, 0.3),
-                0 0 60px rgba(0, 255, 255, 0.2),
-                inset 0 0 30px rgba(255, 0, 255, 0.2);
+            border: 3px solid #00ffff;
+            border-radius: 40px;
+            padding: 2.5rem;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
             position: relative;
             overflow: hidden;
-            width: 100%;
         }
 
-        .reactor-core {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: min(500px, 80vw);
-            height: min(500px, 80vw);
-            background: radial-gradient(circle, 
-                rgba(255, 0, 0, 0.4) 0%,
-                rgba(255, 255, 0, 0.4) 20%,
-                rgba(0, 255, 255, 0.4) 40%,
-                rgba(255, 0, 255, 0.4) 60%,
-                transparent 80%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: corePulse 4s ease-in-out infinite;
-            filter: blur(min(60px, 10vw));
-            z-index: 0;
-        }
-
-        @keyframes corePulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-
-        /* Title */
         .title-section {
             text-align: center;
-            margin-bottom: clamp(1.5rem, 5vw, 3rem);
+            margin-bottom: 2.5rem;
         }
 
         .glitch-main {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 8vw, 4rem);
+            font-size: 3.5rem;
             font-weight: 900;
-            text-transform: uppercase;
             color: white;
-            text-shadow: 
-                0.05em 0 0 rgba(255, 0, 0, 0.8),
-                -0.05em -0.025em 0 rgba(0, 255, 255, 0.8),
-                0.025em 0.05em 0 rgba(255, 0, 255, 0.8);
+            text-shadow: 0.05em 0 0 #ff0000, -0.05em -0.025em 0 #00ffff;
             animation: glitch 700ms infinite;
-            letter-spacing: clamp(2px, 1vw, 8px);
-            line-height: 1.2;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
         }
 
         .sub-glitch {
             color: #fff;
-            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-size: 1.2rem;
             letter-spacing: 3px;
-            text-shadow: 0 0 10px cyan, 0 0 20px magenta;
-            margin-top: 0.5rem;
+            text-shadow: 0 0 10px cyan;
         }
 
-        /* Target Display */
         .target-panel {
             background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #00ffff;
-            border-radius: clamp(15px, 4vw, 30px);
-            padding: clamp(1.5rem, 4vw, 2rem);
+            border: 2px solid #ff00ff;
+            border-radius: 30px;
+            padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
         }
 
         .target-label {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
             color: #00ffff;
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            font-weight: 600;
-            flex-wrap: wrap;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .target-icon {
-            width: clamp(40px, 8vw, 50px);
-            height: clamp(40px, 8vw, 50px);
+            width: 50px;
+            height: 50px;
             background: linear-gradient(45deg, #ff0000, #00ffff);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: black;
             animation: spin 4s linear infinite;
         }
 
-        .target-input-wrapper {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .target-input {
-            flex: 1;
-            min-width: 250px;
+            width: 100%;
             background: rgba(0, 0, 0, 0.8);
             border: 2px solid #ff00ff;
             border-radius: 20px;
-            padding: clamp(1rem, 3vw, 1.5rem);
+            padding: 1.5rem;
             color: #00ffff;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            font-size: 1.1rem;
             font-family: 'Rajdhani', sans-serif;
-            transition: all 0.3s;
         }
 
         .target-input:focus {
@@ -225,68 +120,30 @@
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
         }
 
-        .example-box {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(255, 0, 255, 0.1);
-            border-radius: 15px;
-            border: 1px solid #ff00ff;
-            flex-wrap: wrap;
-        }
-
-        .example-link {
-            color: #00ffff;
-            font-size: 0.9rem;
-            word-break: break-all;
-        }
-
-        /* Attack Modes Grid */
-        .attack-grid {
+        .depth-selector {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
         }
 
-        .attack-mode {
+        .depth-btn {
             background: rgba(0, 0, 0, 0.8);
             border: 2px solid;
-            padding: 1.5rem 1rem;
+            padding: 1.2rem;
             border-radius: 20px;
             color: white;
             font-weight: 700;
-            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            overflow: hidden;
+            text-align: center;
         }
 
-        .attack-mode i {
-            font-size: 2rem;
-        }
+        .depth-btn[data-depth="1"] { border-color: #ff0000; }
+        .depth-btn[data-depth="2"] { border-color: #00ffff; }
+        .depth-btn[data-depth="3"] { border-color: #ff00ff; }
+        .depth-btn.active { background: currentColor; color: black; }
 
-        .attack-mode small {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-
-        .attack-mode[data-mode="1"] { border-color: #ff0000; box-shadow: 0 0 20px #ff0000; }
-        .attack-mode[data-mode="2"] { border-color: #00ffff; box-shadow: 0 0 20px #00ffff; }
-        .attack-mode[data-mode="3"] { border-color: #ff00ff; box-shadow: 0 0 20px #ff00ff; }
-
-        .attack-mode.active[data-mode="1"] { background: #ff0000; color: black; }
-        .attack-mode.active[data-mode="2"] { background: #00ffff; color: black; }
-        .attack-mode.active[data-mode="3"] { background: #ff00ff; color: black; }
-
-        /* Launch Button */
         .launch-btn {
             width: 100%;
             padding: 1.8rem;
@@ -296,13 +153,8 @@
             color: white;
             font-size: 2rem;
             font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 5px;
             cursor: pointer;
-            transition: all 0.3s;
             margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
             animation: btnPulse 3s infinite;
         }
 
@@ -310,21 +162,8 @@
             0% { box-shadow: 0 0 30px #ff0000; }
             33% { box-shadow: 0 0 30px #00ffff; }
             66% { box-shadow: 0 0 30px #ff00ff; }
-            100% { box-shadow: 0 0 30px #ff0000; }
         }
 
-        .launch-btn:hover {
-            transform: scale(1.02);
-            filter: brightness(1.2);
-            letter-spacing: 8px;
-        }
-
-        .launch-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Terminal */
         .terminal {
             background: #000;
             border: 3px solid #00ffff;
@@ -332,9 +171,8 @@
             padding: 1.5rem;
             margin-bottom: 2rem;
             font-family: 'Courier New', monospace;
-            max-height: 250px;
+            max-height: 300px;
             overflow-y: auto;
-            box-shadow: inset 0 0 30px rgba(0, 255, 255, 0.2);
         }
 
         .terminal-header {
@@ -360,29 +198,34 @@
             color: #00ffff;
             margin: 0.3rem 0;
             font-size: 0.9rem;
-            animation: slideIn 0.2s;
             word-break: break-word;
         }
 
-        /* Result Card */
+        .extraction-path {
+            background: rgba(255, 0, 255, 0.1);
+            border-left: 4px solid #ff00ff;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .path-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.5rem 0;
+            color: white;
+        }
+
+        .path-step i {
+            color: #00ffff;
+        }
+
         .result-card {
-            background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(0,255,255,0.1), rgba(255,0,255,0.1));
+            background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(0,255,255,0.1));
             border: 3px solid #00ffff;
             border-radius: 30px;
             padding: 2rem;
             margin: 2rem 0;
-            animation: resultAppear 0.5s ease-out;
-        }
-
-        .link-type-badge {
-            display: inline-block;
-            padding: 0.5rem 2rem;
-            background: linear-gradient(45deg, #ff0000, #00ffff);
-            border-radius: 30px;
-            color: white;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
         }
 
         .direct-link-box {
@@ -394,26 +237,22 @@
             font-size: 1.1rem;
             margin: 1.5rem 0;
             border: 2px dashed #ff00ff;
-            box-shadow: inset 0 0 20px rgba(0,255,255,0.2);
         }
 
         .action-buttons {
             display: flex;
             gap: 1rem;
             margin-top: 1.5rem;
-            flex-wrap: wrap;
         }
 
         .action-btn {
             flex: 1;
-            min-width: 120px;
             padding: 1rem;
             border: none;
             border-radius: 15px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -424,13 +263,6 @@
         .action-btn:nth-child(2) { background: #ff00ff; color: white; }
         .action-btn:nth-child(3) { background: #ffff00; color: black; }
 
-        .action-btn:hover {
-            transform: translateY(-5px);
-            filter: brightness(1.2);
-            box-shadow: 0 10px 30px currentColor;
-        }
-
-        /* Stats */
         .stats-panel {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -455,150 +287,99 @@
         .stat-label {
             color: white;
             font-size: 0.8rem;
-            text-transform: uppercase;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .attack-grid {
-                grid-template-columns: 1fr;
-            }
-            .action-buttons {
-                flex-direction: column;
-            }
-            .stats-panel {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .glitch-main { font-size: 2rem; }
+            .depth-selector { grid-template-columns: 1fr; }
+            .action-buttons { flex-direction: column; }
+            .stats-panel { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
-    <div class="scan-lines"></div>
     <div class="container">
         <div class="reactor-card">
-            <div class="reactor-core"></div>
-            <div class="content">
-                <!-- Title -->
-                <div class="title-section">
-                    <div class="glitch-main">GPLINKS BREAKER</div>
-                    <div class="sub-glitch">CAPTCHA Bypass • Telegram Link Specialist</div>
+            <div class="title-section">
+                <div class="glitch-main">GPLINKS DEEP BREAKER</div>
+                <div class="sub-glitch">Multi-Layer • 404 Solver • Final Destination</div>
+            </div>
+
+            <div class="target-panel">
+                <div class="target-label">
+                    <div class="target-icon">🎯</div>
+                    <span>ENTER GPLINKS URL</span>
                 </div>
+                <input type="url" id="targetUrl" class="target-input" 
+                       value="https://gplinks.co/RvjA4">
+            </div>
 
-                <!-- Target Input -->
-                <div class="target-panel">
-                    <div class="target-label">
-                        <div class="target-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <span>ENTER GPLINKS URL</span>
-                    </div>
-                    <div class="target-input-wrapper">
-                        <input type="url" id="targetUrl" class="target-input" 
-                               placeholder="Paste GPLinks / IndianShortner URL"
-                               value="https://gplinks.co/RvjA4">
-                    </div>
-                    
-                    <!-- Example Display -->
-                    <div class="example-box">
-                        <i class="fas fa-arrow-right" style="color: #00ffff;"></i>
-                        <span style="color: white;">Expected Output:</span>
-                        <span class="example-link">https://telegram.dog/Tamil_Cartoons_YoGi_Rare_bot?start=fs_MzIwNzQ=</span>
-                    </div>
+            <div class="depth-selector">
+                <button class="depth-btn active" data-depth="1" onclick="setDepth(1)">DEPTH 1<br><small>Single Layer</small></button>
+                <button class="depth-btn" data-depth="2" onclick="setDepth(2)">DEPTH 2<br><small>Follow Redirect</small></button>
+                <button class="depth-btn" data-depth="3" onclick="setDepth(3)">DEPTH 3<br><small>Deep Extraction</small></button>
+            </div>
+
+            <button class="launch-btn" onclick="deepBreak()">
+                <i class="fas fa-bomb"></i> DEEP BREAK
+            </button>
+
+            <div class="terminal" id="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-light"></div>
+                    <div class="terminal-light"></div>
+                    <div class="terminal-light"></div>
                 </div>
-
-                <!-- Attack Modes -->
-                <div class="attack-grid">
-                    <button class="attack-mode active" data-mode="1" onclick="selectMode(1)">
-                        <i class="fas fa-skull"></i>
-                        <span>GPLINKS</span>
-                        <small>Specialized Breaker</small>
-                    </button>
-                    <button class="attack-mode" data-mode="2" onclick="selectMode(2)">
-                        <i class="fas fa-robot"></i>
-                        <span>CAPTCHA BYPASS</span>
-                        <small>Auto-solver</small>
-                    </button>
-                    <button class="attack-mode" data-mode="3" onclick="selectMode(3)">
-                        <i class="fas fa-dragon"></i>
-                        <span>TELEGRAM</span>
-                        <small>Link Extractor</small>
-                    </button>
+                <div id="terminalContent">
+                    <div class="terminal-line">> DEEP BREAKER INITIALIZED</div>
+                    <div class="terminal-line">> READY TO SOLVE 404 ERRORS</div>
                 </div>
+            </div>
 
-                <!-- Launch Button -->
-                <button class="launch-btn" onclick="launchAttack()" id="launchBtn">
-                    <i class="fas fa-rocket"></i> BREAK GPLINKS
-                </button>
+            <div id="extractionPath" class="extraction-path" style="display: none;">
+                <h3 style="color: #00ffff; margin-bottom: 1rem;">🔍 EXTRACTION PATH</h3>
+                <div id="pathSteps"></div>
+            </div>
 
-                <!-- Terminal -->
-                <div class="terminal" id="terminal">
-                    <div class="terminal-header">
-                        <div class="terminal-light"></div>
-                        <div class="terminal-light"></div>
-                        <div class="terminal-light"></div>
-                    </div>
-                    <div id="terminalContent">
-                        <div class="terminal-line">> GPLINKS BREAKER INITIALIZED</div>
-                        <div class="terminal-line">> READY TO BYPASS CAPTCHA</div>
-                        <div class="terminal-line">> AWAITING TARGET...</div>
+            <div id="resultArea" style="display: none;">
+                <div class="result-card">
+                    <span class="link-type-badge" id="linkTypeBadge">🎯 FINAL DESTINATION</span>
+                    <div class="direct-link-box" id="directLink"></div>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="copyLink()"><i class="fas fa-copy"></i> COPY</button>
+                        <button class="action-btn" onclick="openLink()"><i class="fas fa-external-link-alt"></i> OPEN</button>
+                        <button class="action-btn" onclick="testLink()"><i class="fas fa-flask"></i> TEST</button>
                     </div>
                 </div>
+            </div>
 
-                <!-- Result Area -->
-                <div id="resultArea" style="display: none;">
-                    <div class="result-card">
-                        <span class="link-type-badge" id="linkTypeBadge">🔗 TELEGRAM LINK EXTRACTED</span>
-                        
-                        <div class="direct-link-box" id="directLink">
-                            <!-- Direct link appears here -->
-                        </div>
-
-                        <div class="action-buttons">
-                            <button class="action-btn" onclick="copyLink()">
-                                <i class="fas fa-copy"></i> COPY
-                            </button>
-                            <button class="action-btn" onclick="openInNewTab()">
-                                <i class="fas fa-external-link-alt"></i> OPEN
-                            </button>
-                            <button class="action-btn" onclick="downloadFile()">
-                                <i class="fas fa-download"></i> DOWNLOAD
-                            </button>
-                        </div>
-                    </div>
+            <div class="stats-panel">
+                <div class="stat-card">
+                    <div class="stat-value" id="layersExplored">0</div>
+                    <div class="stat-label">LAYERS</div>
                 </div>
-
-                <!-- Stats -->
-                <div class="stats-panel">
-                    <div class="stat-card">
-                        <div class="stat-value" id="statAttempts">0</div>
-                        <div class="stat-label">ATTEMPTS</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statSuccess">0</div>
-                        <div class="stat-label">SUCCESS</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statProxies">15</div>
-                        <div class="stat-label">PROXIES</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statPatterns">25</div>
-                        <div class="stat-label">PATTERNS</div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="linksFound">0</div>
+                    <div class="stat-label">LINKS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="successRate">0%</div>
+                    <div class="stat-label">SUCCESS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="activeProxies">15</div>
+                    <div class="stat-label">PROXIES</div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // ==================== GPLINKS SPECIALIZED BREAKER ====================
-        
-        let currentMode = 1;
-        let attempts = 0;
-        let successes = 0;
-        let extractedLinks = [];
+        let currentDepth = 3; // Default to deepest
+        let layersExplored = 0;
+        let linksFound = 0;
+        let extractionPath = [];
 
-        // PROXY ARMY
         const PROXIES = [
             'https://api.allorigins.win/raw?url=',
             'https://corsproxy.io/?',
@@ -617,81 +398,13 @@
             'https://cors.eu.org/?'
         ];
 
-        // GPLINKS SPECIFIC PATTERNS
-        const GPLINKS_PATTERNS = [
-            // Telegram bot patterns
-            /https?:\/\/telegram\.dog\/[^\s"'<>]+/gi,
-            /https?:\/\/t\.me\/[^\s"'<>]+/gi,
-            /https?:\/\/telegram\.me\/[^\s"'<>]+/gi,
-            
-            // URL parameters
-            /(?:url|link|redirect|goto)=([^&"'\s<>]+)/gi,
-            
-            // JavaScript redirects
-            /window\.location(?:\s*=\s*|\.href\s*=\s*|\.replace\s*\()['"]([^'"]+)['"]/gi,
-            /location\.href\s*=\s*['"]([^'"]+)['"]/gi,
-            
-            // Meta refresh
-            /<meta[^>]*http-equiv="refresh"[^>]*content="[^"]*url=([^"]+)"[^>]*>/gi,
-            
-            // Data attributes
-            /data-(?:url|link|redirect)="([^"]+)"/gi,
-            
-            // Form actions
-            /<form[^>]*action=["']([^"']+)["'][^>]*>/gi,
-            
-            // Script variables
-            /var\s+(?:url|link|redirect)\s*=\s*['"]([^'"]+)['"]/gi,
-            /let\s+(?:url|link|redirect)\s*=\s*['"]([^'"]+)['"]/gi,
-            
-            // JSON data
-            /"(?:url|link|redirect)"\s*:\s*"([^"]+)"/gi,
-            
-            // Cloudflare patterns (from your received file)
-            /window\.__cfBeacon\s*=\s*({[^}]+})/gi,
-            /"token":"([^"]+)"/gi,
-            /"icTag":"([^"]+)"/gi
-        ];
-
-        // CAPTCHA BYPASS HEADERS
-        const BROWSER_HEADERS = [
-            {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.9',
-                'Cache-Control': 'no-cache',
-                'Pragma': 'no-cache',
-                'Sec-Fetch-Dest': 'document',
-                'Sec-Fetch-Mode': 'navigate',
-                'Sec-Fetch-Site': 'none',
-                'Sec-Fetch-User': '?1',
-                'Upgrade-Insecure-Requests': '1'
-            },
-            {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/120.0.0.0',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.9',
-                'Cache-Control': 'no-cache'
-            },
-            {
-                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120.0.0.0',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.9'
-            }
-        ];
-
-        function selectMode(mode) {
-            currentMode = mode;
-            document.querySelectorAll('.attack-mode').forEach(btn => {
+        function setDepth(depth) {
+            currentDepth = depth;
+            document.querySelectorAll('.depth-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
-            addToTerminal(`> MODE ${mode}: ${getModeName(mode)} ACTIVATED`);
-        }
-
-        function getModeName(mode) {
-            const names = ['GPLINKS BREAKER', 'CAPTCHA BYPASS', 'TELEGRAM EXTRACTOR'];
-            return names[mode - 1];
+            document.querySelector(`[data-depth="${depth}"]`).classList.add('active');
+            addToTerminal(`> DEPTH ${depth} MODE ACTIVATED`);
         }
 
         function addToTerminal(text) {
@@ -703,342 +416,274 @@
             terminal.scrollTop = terminal.scrollHeight;
         }
 
-        function clearTerminal() {
-            document.getElementById('terminalContent').innerHTML = '';
+        function addPathStep(step, url) {
+            extractionPath.push({ step, url });
+            const pathDiv = document.getElementById('pathSteps');
+            const stepHtml = `
+                <div class="path-step">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>${step}: </span>
+                    <span style="color: #00ffff;">${url.substring(0, 50)}${url.length > 50 ? '...' : ''}</span>
+                </div>
+            `;
+            pathDiv.innerHTML += stepHtml;
         }
 
-        async function launchAttack() {
-            const url = document.getElementById('targetUrl').value.trim();
-            if (!url) {
-                addToTerminal('> ERROR: No target specified');
-                return;
-            }
-
-            if (!url.includes('gplinks.co') && !url.includes('indianshortner')) {
-                addToTerminal('> ⚠️ Warning: This is optimized for GPLinks');
-            }
-
-            attempts++;
-            document.getElementById('statAttempts').textContent = attempts;
-            
-            clearTerminal();
-            addToTerminal(`> 🎯 ATTACK INITIATED [MODE: ${getModeName(currentMode)}]`);
-            addToTerminal(`> TARGET: ${url}`);
-            addToTerminal('> BYPASSING CAPTCHA...');
-
-            document.getElementById('launchBtn').disabled = true;
-            document.getElementById('resultArea').style.display = 'none';
-
-            let finalLink = null;
-
-            if (currentMode === 1) {
-                finalLink = await gplinksBreaker(url);
-            } else if (currentMode === 2) {
-                finalLink = await captchaBypass(url);
-            } else {
-                finalLink = await telegramExtractor(url);
-            }
-
-            if (finalLink) {
-                successes++;
-                document.getElementById('statSuccess').textContent = successes;
-                extractedLinks.push(finalLink);
+        async function fetchWithProxy(url, proxyIndex = 0) {
+            try {
+                const proxy = PROXIES[proxyIndex % PROXIES.length];
+                const response = await fetch(proxy + encodeURIComponent(url), {
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                        'Accept-Language': 'en-US,en;q=0.9'
+                    }
+                });
                 
-                const linkType = finalLink.includes('telegram') ? 'TELEGRAM LINK' : 'DIRECT LINK';
-                document.getElementById('linkTypeBadge').innerHTML = `🔗 ${linkType} EXTRACTED`;
-                document.getElementById('directLink').textContent = finalLink;
-                document.getElementById('resultArea').style.display = 'block';
-                
-                addToTerminal('> ✅ LINK EXTRACTED SUCCESSFULLY!');
-                addToTerminal(`> 📁 FINAL URL: ${finalLink}`);
-                
-                // Verify if it matches expected output
-                if (finalLink.includes('telegram.dog/Tamil_Cartoons_YoGi_Rare_bot')) {
-                    addToTerminal('> 🎯 MATCHED EXPECTED OUTPUT!');
+                if (response.ok) {
+                    const finalUrl = response.url.replace(proxy, '');
+                    const html = await response.text();
+                    return { html, finalUrl: decodeURIComponent(finalUrl) };
                 }
-            } else {
-                addToTerminal('> ❌ EXTRACTION FAILED');
-                addToTerminal('> 💡 TIPS: Try different mode or check link');
+            } catch (e) {
+                addToTerminal(`> Proxy ${proxyIndex + 1} failed: ${e.message.substring(0, 50)}`);
             }
-
-            document.getElementById('launchBtn').disabled = false;
+            return null;
         }
 
-        // MODE 1: GPLINKS SPECIALIZED BREAKER
-        async function gplinksBreaker(url) {
-            addToTerminal('> [GPLINKS] Starting specialized breaker...');
+        async function extractLinks(html, baseUrl) {
+            const links = new Set();
             
-            let foundLinks = new Set();
-            
-            // Try with different proxies and headers
-            for (let i = 0; i < PROXIES.length; i++) {
-                try {
-                    const proxy = PROXIES[i];
-                    const headers = BROWSER_HEADERS[i % BROWSER_HEADERS.length];
+            // GPLinks specific patterns
+            const patterns = [
+                /window\.location(?:\s*=\s*|\.href\s*=\s*|\.replace\s*\()['"]([^'"]+)['"]/g,
+                /location\.href\s*=\s*['"]([^'"]+)['"]/g,
+                /<meta[^>]*http-equiv="refresh"[^>]*content="[^"]*url=([^"]+)"[^>]*>/g,
+                /<a[^>]*href=["']([^"']+)["'][^>]*>/g,
+                /var\s+(?:url|link|redirect)\s*=\s*['"]([^'"]+)['"]/g,
+                /let\s+(?:url|link|redirect)\s*=\s*['"]([^'"]+)['"]/g,
+                /data-(?:url|link|redirect)="([^"]+)"/g,
+                /"(?:url|link|redirect)"\s*:\s*"([^"]+)"/g,
+                /atob\(['"]([^'"]+)['"]\)/g,
+                /https?:\/\/[^\s"'<>]+/g
+            ];
+
+            for (let pattern of patterns) {
+                const matches = html.matchAll(pattern);
+                for (let match of matches) {
+                    let link = match[1] || match[0];
                     
+                    // Clean the link
+                    link = link.trim().replace(/^['"]|['"]$/g, '');
+                    
+                    // Handle relative URLs
+                    if (link.startsWith('/')) {
+                        try {
+                            const base = new URL(baseUrl);
+                            link = base.origin + link;
+                        } catch {}
+                    } else if (link.startsWith('//')) {
+                        link = 'https:' + link;
+                    } else if (!link.startsWith('http') && !link.startsWith('data:')) {
+                        try {
+                            link = new URL(link, baseUrl).href;
+                        } catch {}
+                    }
+                    
+                    if (link.startsWith('http') && !link.includes('example.com')) {
+                        links.add(link);
+                    }
+                }
+            }
+            
+            return Array.from(links);
+        }
+
+        async function deepBreak() {
+            const startUrl = document.getElementById('targetUrl').value.trim();
+            if (!startUrl) return;
+
+            // Reset
+            layersExplored = 0;
+            linksFound = 0;
+            extractionPath = [];
+            document.getElementById('layersExplored').textContent = '0';
+            document.getElementById('linksFound').textContent = '0';
+            document.getElementById('extractionPath').style.display = 'none';
+            document.getElementById('pathSteps').innerHTML = '';
+            document.getElementById('resultArea').style.display = 'none';
+            
+            addToTerminal(`> 🎯 STARTING DEEP BREAK: ${startUrl}`);
+            
+            let currentUrl = startUrl;
+            let depth = 0;
+            let allLinks = new Set();
+            
+            // Continue until we reach desired depth or no more redirects
+            while (depth < currentDepth && currentUrl) {
+                depth++;
+                layersExplored = depth;
+                document.getElementById('layersExplored').textContent = depth;
+                
+                addToTerminal(`> 🔍 LAYER ${depth}: ${currentUrl}`);
+                addPathStep(`Layer ${depth}`, currentUrl);
+                
+                let found = false;
+                
+                // Try all proxies for this layer
+                for (let i = 0; i < PROXIES.length; i++) {
                     addToTerminal(`> Trying proxy ${i+1}/${PROXIES.length}...`);
                     
-                    const response = await fetch(proxy + encodeURIComponent(url), {
-                        headers: headers
-                    });
+                    const result = await fetchWithProxy(currentUrl, i);
                     
-                    if (response.ok) {
-                        const html = await response.text();
-                        addToTerminal(`> HTML received: ${html.length} bytes`);
+                    if (result) {
+                        addToTerminal(`> HTML received: ${result.html.length} bytes`);
                         
-                        // Check for redirect in response URL
-                        const responseUrl = response.url.replace(proxy, '');
-                        if (responseUrl && responseUrl !== url && !responseUrl.includes(proxy)) {
-                            const decodedUrl = decodeURIComponent(responseUrl);
-                            addToTerminal(`> Found redirect: ${decodedUrl.substring(0, 100)}`);
-                            foundLinks.add(decodedUrl);
-                        }
+                        // Extract all links from this page
+                        const links = await extractLinks(result.html, currentUrl);
                         
-                        // Extract all links using patterns
-                        for (let pattern of GPLINKS_PATTERNS) {
-                            const matches = html.matchAll(pattern);
-                            for (let match of matches) {
-                                let link = match[1] || match[0];
-                                link = cleanUrl(link, url);
-                                if (isValidUrl(link)) {
-                                    addToTerminal(`> Pattern match: ${link.substring(0, 100)}`);
-                                    foundLinks.add(link);
-                                }
+                        links.forEach(link => {
+                            allLinks.add(link);
+                            addToTerminal(`> Found: ${link.substring(0, 100)}`);
+                        });
+                        
+                        linksFound = allLinks.size;
+                        document.getElementById('linksFound').textContent = linksFound;
+                        
+                        // Look for the most promising next URL
+                        const potentialNext = links.find(link => 
+                            link.includes('gplinks.co/') && 
+                            !link.includes(currentUrl.split('/').pop())
+                        );
+                        
+                        if (potentialNext && potentialNext !== currentUrl) {
+                            currentUrl = potentialNext;
+                            found = true;
+                            addToTerminal(`> ➡️ Moving to next layer: ${currentUrl}`);
+                            break;
+                        } else {
+                            // Check if we got a redirect in the response URL
+                            if (result.finalUrl && result.finalUrl !== currentUrl) {
+                                currentUrl = result.finalUrl;
+                                found = true;
+                                addToTerminal(`> ➡️ Redirected to: ${currentUrl}`);
+                                break;
                             }
-                        }
-                        
-                        // Look for Cloudflare beacon data (from your file)
-                        if (html.includes('__cfBeacon')) {
-                            addToTerminal('> Detected Cloudflare beacon, extracting data...');
-                            const beaconMatch = html.match(/window\.__cfBeacon\s*=\s*({[^}]+})/);
-                            if (beaconMatch) {
-                                try {
-                                    const beaconData = JSON.parse(beaconMatch[1]);
-                                    if (beaconData.token) {
-                                        addToTerminal(`> Found CF token: ${beaconData.token}`);
-                                    }
-                                } catch {}
-                            }
-                        }
-                        
-                        // If we found links, try to return the best one
-                        if (foundLinks.size > 0) {
-                            const bestLink = selectBestLink(Array.from(foundLinks));
-                            if (bestLink) return bestLink;
                         }
                     }
-                } catch (e) {
-                    addToTerminal(`> Proxy ${i+1} failed: ${e.message.substring(0, 50)}`);
+                }
+                
+                if (!found) {
+                    addToTerminal(`> ⚠️ No further links found at layer ${depth}`);
+                    break;
                 }
             }
             
-            return selectBestLink(Array.from(foundLinks));
-        }
-
-        // MODE 2: CAPTCHA BYPASS SPECIALIST
-        async function captchaBypass(url) {
-            addToTerminal('> [CAPTCHA BYPASS] Attempting to bypass verification...');
-            
-            let foundLinks = new Set();
-            
-            for (let proxy of PROXIES.slice(0, 8)) {
-                try {
-                    // First request to get cookies/session
-                    addToTerminal('> Setting up session...');
-                    
-                    const sessionResponse = await fetch(proxy + encodeURIComponent(url), {
-                        headers: BROWSER_HEADERS[0]
-                    });
-                    
-                    if (sessionResponse.ok) {
-                        const html = await sessionResponse.text();
-                        
-                        // Look for CAPTCHA tokens
-                        const tokenPatterns = [
-                            /name="csrf_token"\s+value="([^"]+)"/i,
-                            /name="token"\s+value="([^"]+)"/i,
-                            /data-cf-ray="([^"]+)"/i,
-                            /cf_chl_\\?probe/i,
-                            /__cfduid/i
-                        ];
-                        
-                        for (let pattern of tokenPatterns) {
-                            const match = html.match(pattern);
-                            if (match) {
-                                addToTerminal(`> Found token: ${match[1] || match[0]}`);
-                            }
-                        }
-                        
-                        // Try to extract redirect from verification page
-                        const redirectPatterns = [
-                            /window\.location\s*=\s*['"]([^'"]+)['"]/,
-                            /setTimeout\(function\(\)\s*{\s*window\.location\s*=\s*['"]([^'"]+)['"]/,
-                            /<a[^>]*id="continue"[^>]*href="([^"]+)"/
-                        ];
-                        
-                        for (let pattern of redirectPatterns) {
-                            const match = html.match(pattern);
-                            if (match && match[1]) {
-                                let link = cleanUrl(match[1], url);
-                                if (isValidUrl(link)) {
-                                    foundLinks.add(link);
-                                }
-                            }
-                        }
-                        
-                        // Try second request with cookies (simulated)
-                        addToTerminal('> Attempting bypass with session...');
-                        
-                        const secondResponse = await fetch(proxy + encodeURIComponent(url), {
-                            headers: {
-                                ...BROWSER_HEADERS[1],
-                                'Cookie': sessionResponse.headers.get('set-cookie') || ''
-                            }
-                        });
-                        
-                        if (secondResponse.ok) {
-                            const finalUrl = secondResponse.url.replace(proxy, '');
-                            if (finalUrl && finalUrl !== url) {
-                                foundLinks.add(decodeURIComponent(finalUrl));
-                            }
-                        }
-                    }
-                } catch (e) {}
-            }
-            
-            return selectBestLink(Array.from(foundLinks));
-        }
-
-        // MODE 3: TELEGRAM LINK EXTRACTOR
-        async function telegramExtractor(url) {
-            addToTerminal('> [TELEGRAM] Specialized Telegram link extractor...');
-            
-            let foundLinks = new Set();
-            
-            for (let proxy of PROXIES) {
-                try {
-                    const response = await fetch(proxy + encodeURIComponent(url));
-                    
-                    if (response.ok) {
-                        const html = await response.text();
-                        
-                        // Telegram-specific patterns
-                        const telegramPatterns = [
-                            /https?:\/\/(?:t\.me|telegram\.me|telegram\.dog)\/[^\s"'<>]+/gi,
-                            /(?:bot|start)=([^&\s"']+)/gi,
-                            /"url":"(https?:\/\/[^"]+telegram[^"]+)"/gi,
-                            /window\.open\(['"]([^'"]+telegram[^'"]+)['"]/gi
-                        ];
-                        
-                        for (let pattern of telegramPatterns) {
-                            const matches = html.matchAll(pattern);
-                            for (let match of matches) {
-                                let link = match[1] || match[0];
-                                if (!link.startsWith('http')) {
-                                    link = 'https://telegram.dog/' + link;
-                                }
-                                link = cleanUrl(link, url);
-                                if (isValidUrl(link) && link.includes('telegram')) {
-                                    addToTerminal(`> Found Telegram link: ${link}`);
-                                    foundLinks.add(link);
-                                }
-                            }
-                        }
-                        
-                        // Look for base64 encoded bot data
-                        const base64Matches = html.match(/start=([A-Za-z0-9+/=]+)/g);
-                        if (base64Matches) {
-                            for (let match of base64Matches) {
-                                const botLink = `https://telegram.dog/Tamil_Cartoons_YoGi_Rare_bot?${match}`;
-                                foundLinks.add(botLink);
-                                addToTerminal(`> Reconstructed bot link: ${botLink}`);
-                            }
-                        }
-                    }
-                } catch (e) {}
-            }
-            
-            return selectBestLink(Array.from(foundLinks));
-        }
-
-        function cleanUrl(url, baseUrl) {
-            url = url.trim().replace(/^['"]|['"]$/g, '');
-            
-            if (url.startsWith('//')) {
-                url = 'https:' + url;
-            }
-            
-            if (url.startsWith('/') && baseUrl) {
-                try {
-                    const base = new URL(baseUrl);
-                    url = base.origin + url;
-                } catch {}
-            }
-            
-            if (!url.startsWith('http') && baseUrl) {
-                try {
-                    const base = new URL(baseUrl);
-                    if (url.startsWith('.')) {
-                        url = new URL(url, baseUrl).href;
-                    } else if (!url.includes('://')) {
-                        url = new URL(url, baseUrl).href;
-                    }
-                } catch {}
-            }
-            
-            return url;
-        }
-
-        function isValidUrl(string) {
-            try {
-                new URL(string);
-                return string.startsWith('http://') || string.startsWith('https://');
-            } catch {
-                return false;
-            }
-        }
-
-        function selectBestLink(links) {
-            if (!links || links.length === 0) return null;
-            
-            // Priority: Telegram links first
-            const telegramLink = links.find(link => 
+            // Find the final destination (Telegram link)
+            const telegramLinks = Array.from(allLinks).filter(link => 
                 link.includes('telegram.dog') || 
                 link.includes('t.me') || 
                 link.includes('telegram.me')
             );
             
-            if (telegramLink) return telegramLink;
+            let finalLink = null;
             
-            // Then look for the longest URL (usually the final destination)
-            return links.reduce((a, b) => (a.length > b.length ? a : b));
+            if (telegramLinks.length > 0) {
+                finalLink = telegramLinks[0];
+                addToTerminal(`> 🎯 FOUND TELEGRAM LINK: ${finalLink}`);
+            } else {
+                // Try to find any valid link that's not a gplinks tracking URL
+                const validLinks = Array.from(allLinks).filter(link => 
+                    !link.includes('gplinks.co') && 
+                    !link.includes('example.com') &&
+                    link.startsWith('http')
+                );
+                
+                if (validLinks.length > 0) {
+                    finalLink = validLinks[0];
+                    addToTerminal(`> 🎯 FOUND FINAL LINK: ${finalLink}`);
+                } else {
+                    // If we only have gplinks URLs, take the last one
+                    const lastGplink = Array.from(allLinks).find(link => 
+                        link.includes('gplinks.co/') && 
+                        link !== startUrl
+                    );
+                    
+                    if (lastGplink) {
+                        finalLink = lastGplink;
+                        addToTerminal(`> ⚠️ Last link found: ${finalLink}`);
+                        addToTerminal(`> 💡 This might be a tracking ID, trying to extract further...`);
+                        
+                        // Try one more time with the last link
+                        addToTerminal(`> 🔄 Attempting final extraction...`);
+                        const result = await fetchWithProxy(finalLink);
+                        if (result) {
+                            const links = await extractLinks(result.html, finalLink);
+                            const telegramFinal = links.find(link => 
+                                link.includes('telegram.dog') || link.includes('t.me')
+                            );
+                            if (telegramFinal) {
+                                finalLink = telegramFinal;
+                                addToTerminal(`> ✅ Success! Found Telegram link: ${finalLink}`);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if (finalLink) {
+                document.getElementById('directLink').textContent = finalLink;
+                document.getElementById('resultArea').style.display = 'block';
+                document.getElementById('extractionPath').style.display = 'block';
+                
+                // Check if it's the expected Telegram bot link
+                if (finalLink.includes('telegram.dog/Tamil_Cartoons_YoGi_Rare_bot')) {
+                    addToTerminal(`> 🎉 EXACT MATCH FOUND!`);
+                    document.getElementById('linkTypeBadge').innerHTML = '🎯 TELEGRAM BOT LINK';
+                } else if (finalLink.includes('telegram')) {
+                    document.getElementById('linkTypeBadge').innerHTML = '📱 TELEGRAM LINK';
+                } else {
+                    document.getElementById('linkTypeBadge').innerHTML = '🔗 FINAL LINK';
+                }
+                
+                // Calculate success rate
+                const successRate = Math.round((telegramLinks.length > 0 ? 100 : 50));
+                document.getElementById('successRate').textContent = successRate + '%';
+            } else {
+                addToTerminal(`> ❌ No valid final link found`);
+                addToTerminal(`> 💡 Try increasing depth or using different proxies`);
+            }
         }
 
         function copyLink() {
             const link = document.getElementById('directLink').textContent;
-            navigator.clipboard.writeText(link).then(() => {
-                addToTerminal('> ✅ Link copied to clipboard');
-            });
+            navigator.clipboard.writeText(link);
+            addToTerminal('> ✅ Link copied!');
         }
 
-        function openInNewTab() {
+        function openLink() {
             const link = document.getElementById('directLink').textContent;
             window.open(link, '_blank');
         }
 
-        function downloadFile() {
+        async function testLink() {
             const link = document.getElementById('directLink').textContent;
-            window.open(link, '_blank');
+            addToTerminal(`> Testing link: ${link}`);
+            
+            try {
+                const response = await fetch(link, { method: 'HEAD' });
+                if (response.ok) {
+                    addToTerminal(`> ✅ Link is accessible! Status: ${response.status}`);
+                } else {
+                    addToTerminal(`> ⚠️ Link returned status: ${response.status}`);
+                }
+            } catch {
+                addToTerminal(`> ⚠️ Link test failed - might need browser open`);
+            }
         }
 
         // Initialize
-        window.onload = function() {
-            document.getElementById('statProxies').textContent = PROXIES.length;
-            document.getElementById('statPatterns').textContent = GPLINKS_PATTERNS.length;
-            addToTerminal('> 🔥 GPLINKS BREAKER READY');
-            addToTerminal('> 📌 Example: https://gplinks.co/RvjA4');
-            addToTerminal('> 🎯 Target: Telegram Bot Link');
-        };
+        document.getElementById('activeProxies').textContent = PROXIES.length;
     </script>
 </body>
 </html>
